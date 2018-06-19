@@ -1,24 +1,41 @@
+/* =====GENERAL===== */
+
 body {
     margin: 0;
     background-color: #fafafa;
+    font-family: 'Poppins', sans-serif;
 }
 
+.content {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+/* =====HEADER===== */
+
 .headbar {
+    position : fixed;
     background-color: #ffffff;
     display: flex;
     justify-content: space-around;
     align-items: center;
     height: 75px;
+    width : 100%;
     border-bottom: 1px solid #dbd8d8
 }
 
 .logodiv {
-    width:40vw;
+    padding-left: 30vw;
+    padding-right: 20vw;
 }
 
 .icons {
+    padding-right: 30vw;
     display: flex;
 }
+
 .menicon {
     padding: 20px;
     height: 20px;
@@ -27,4 +44,68 @@ body {
 .logoimg {
     height : 30px;
     margin-left: 50px;s
+}
+
+.headerspace {
+    height: 75px;
+}
+
+/* =====HOMEPAGE===== */
+
+.imgdiv {
+    max-width: 800px;
+    min-width: 300px;
+    width:50vw;
+    border: 1px solid #dbd8d8;
+    border-radius : 4px;
+    background-color: #ffffff;
+    margin: 30px 10px 30px 10px;
+}
+
+.pic {
+    background-color: red;
+    width:100%;
+    padding-top: 100%
+}
+
+.usr {
+    width : 100%;
+    padding: 15px;
+}
+.username {
+    width : 100px;
+    overflow: hidden;
+}
+
+.usr > a {
+    size : 14px;
+}
+
+.acticon {
+    padding: 15px;
+    height: 20px;
+}
+
+.comsection {
+    padding-bottom: 10px;
+}
+
+.comment {
+    display: flex;
+    padding-left: 15px;
+}
+
+.text {
+    max-width: 60%;
+}
+/* =====FOOTER===== */
+
+.footer {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 30%;
+    width : 100%;
+    border-top: 1px solid #dbd8d8
 }

@@ -1,9 +1,7 @@
 <?php
-
-// Database connection informations
 $user = 'root';
-$password = 'root';
-$db = 'inventory';
+$password = '424242';
+$db = 'test';
 $host = 'localhost';
 $port = 8889;
 ?>

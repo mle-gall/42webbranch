@@ -5,6 +5,7 @@
 <head>
     <title><?php echo $title; ?></title>
     <link rel="stylesheet" href="style.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
 </head>
 <body>
     <div class=headbar>
@@ -25,5 +26,7 @@
                     </div>";
             }
         ?>
+    </div>
+    <div class=headerspace>
     </div>
 </html>
