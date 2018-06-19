@@ -1,0 +1,30 @@
+body {
+    margin: 0;
+    background-color: #fafafa;
+}
+
+.headbar {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 75px;
+    border-bottom: 1px solid #dbd8d8
+}
+
+.logodiv {
+    width:40vw;
+}
+
+.icons {
+    display: flex;
+}
+.menicon {
+    padding: 20px;
+    height: 20px;
+}
+
+.logoimg {
+    height : 30px;
+    margin-left: 50px;s
+}
