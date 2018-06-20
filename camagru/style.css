@@ -13,6 +13,42 @@ body {
     justify-content: flex-start;
 }
 
+.forminput {
+    display: inline-block;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    font-size: 16px;
+    width: 300px;
+    padding: 5px 20px;
+    border: 1px solid #dbd8d8;
+    border-radius : 4px;
+    color: #000000;
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    background: #fafafa;
+}
+
+.buttonin {
+  display: inline-block;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  font-size: 16px;
+  width: 300px;
+  padding: 5px 20px;
+  border: 1px solid #dbd8d8;
+  border-radius : 4px;
+  color: #ffffff;
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  background: #000000;
+}
+
+.left {
+    text-align: left;
+}
+
 /* =====HEADER===== */
 
 .headbar {
@@ -151,6 +187,14 @@ a.buttonin:hover {
     border-radius: 4px;
     border: 1px solid #ffffff;
     text-align: center;
+}
+
+.msgerror
+{
+	width:100%;
+	color: #ffffff;
+	background-color: #f93434;
+	margin:10px;
 }
 
 /* =====FOOTER===== */
