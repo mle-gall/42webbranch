@@ -8,7 +8,7 @@
         <div class=warnbod>
             <div class=warn>
                 <img class=warning src=uploads/icons/warning.svg alt=warning/>
-                <h1>Connextion to DB failed !</h1>
+                <h1>Connection to DB failed !</h1>
                 <a>Database is unexistant, or database connection informations provided are false.</a>
                     <div class=buttoninput>
                         <a href='setup.php' class=buttonin>Automatic Setup</a>

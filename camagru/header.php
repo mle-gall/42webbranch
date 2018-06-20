@@ -13,7 +13,7 @@
             <a href=index.php><img class=logoimg src="uploads/icons/logo.svg" alt="Logo Camagru"/></a>
         </div>
         <?php
-            if ($_SESSION['connexion_status'] != 'connected')
+            if (isset($_SESSION['connexion_status']) == 0 OR $_SESSION['connexion_status'] != 'connected')
             {
                 echo "
                     <div class=icons>

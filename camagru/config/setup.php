@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <title>Database Setup</title>
+        <link rel="stylesheet" href="../style.css"/>
+        <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+    </head>
+    <body>
+<?php
+include('database.php');
+include('create_table.php');
+try
+{
+    $bdd = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+
+    $bdd->exec("CREATE DATABASE `$db`;
+                CREATE USER '$DB_USER'@'localhost' IDENTIFIED BY '$DB_PASSWORD';
+                GRANT ALL ON `$db`.* TO '$DB_USER'@'localhost';
+                FLUSH PRIVILEGES;")
+    or die(print_r($bdd->errorInfo(), true));
+}
+catch (PDOException $e)
+{
+    echo "<div class=warnbod>
+            <div class=warn>
+                <img class=warning src=../uploads/icons/warning.svg alt=warning/>
+                <h1>Unable to setup database !</h1>
+                <a>Database setup has already been done or MySQL connection informations provided in config/database.php are false. Once they're corrected, just refresh this page.</a>
+            </div>
+        </div>";
+}
+try
+{
+    $sql ="USE ".$db.";";
+        $bdd->exec($sql);
+        print("Selected database.\n");
+}
+catch(PDOException $e)
+{
+    echo $e->getMessage();
+}
+create_table_user($bdd);
+create_table_pictures($bdd);
+create_table_comments($bdd);
+?>
