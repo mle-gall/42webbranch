@@ -23,6 +23,8 @@
                 <br>
                 <input class=forminput placeholder="DB Name" type="text" name="name" autofocus required />
                 <br>
+                <input class=forminput placeholder="admin Password" type="text" name="admin_pw" autofocus required />
+                <br>
                 <input class=buttonin type="submit" name="submit" value="OK" />
             </p>
         </form>

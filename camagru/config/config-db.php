@@ -11,6 +11,7 @@
                 $file[2] =  "\$DB_USER = '".$_POST['login']."';\n";
                 $file[3] =  "\$DB_PASSWORD = '".$_POST['passwd']."';\n";
                 $file[4] =  "\$db = '".$_POST['name']."';\n";
+                $file[5] =  "\$admin_pw = '".$_POST['admin_pw']."';\n";
                 file_put_contents('database.php', $file);
                 header('Location: dbcheck.php');
             }

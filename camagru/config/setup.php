@@ -39,6 +39,13 @@ catch(PDOException $e)
     echo $e->getMessage();
 }
 create_table_user($bdd);
+$admin_pw = hash('sha512', $admin_pw);
+$req = $bdd->prepare('INSERT INTO USERS(Name, Password, Email) VALUES(:name, :passwd, :mail)');
+$req->execute(array(
+    'name' => "admin",
+    'passwd' => $admin_pw,
+    'mail' => "mail@example.com"
+));
 create_table_pictures($bdd);
 create_table_comments($bdd);
 ?>
