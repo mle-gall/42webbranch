@@ -1,12 +1,12 @@
 <?php
-Include('config.php');
+Include('config/database.php');
 try
 {
-    $bdd = new PDO('mysql:host='.$host.';dbname='.$db.';charset=utf8', $user, $password);
+    $bdd = new PDO($DB_DSN.';dbname='.$db.';charset=utf8', $DB_USER, $DB_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 }
 catch (Exception $e)
 {
-    Header('Location : nodb.php');
+    header('Location: nodb.php');
 }
 $reponse = $bdd->query('SELECT * FROM jeux_video');
 while ($donnees = $reponse->fetch())
