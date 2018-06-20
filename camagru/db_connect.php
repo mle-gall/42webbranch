@@ -6,7 +6,7 @@ try
 }
 catch (Exception $e)
 {
-        die('Error : ' . $e->getMessage());
+    Header('Location : nodb.php');
 }
 $reponse = $bdd->query('SELECT * FROM jeux_video');
 while ($donnees = $reponse->fetch())
