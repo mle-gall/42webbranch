@@ -1,18 +1,26 @@
 <?php
-$title = "Log-in to Camagru";
+$title = "Register to Camagru";
 include "header.php";
 ?>
     <div class=contentform>
     <form class="formbg" action="create_user.php" method="post">
     <p>
         <?php
-        if(isset($_GET["message"]) && $_GET["message"] === "error")
-            echo("<div class=msgerror><a>ERROR : Invalid Login/Password</a></div>");
+        if(isset($_GET["error"]) && $_GET["error"] === "alreadyexists")
+            echo("<div class=msgerror><a>ERROR : Login or email already used.</a></div>");
+        if(isset($_GET["error"]) && $_GET["error"] === "passdontmatch")
+            echo("<div class=msgerror><a>ERROR : The two password don't match.</a></div>");
+        if(isset($_GET["error"]) && $_GET["error"] === "emptyfield")
+            echo("<div class=msgerror><a>ERROR : One field is incorrect or missing.</a></div>");
         ?>
-        <h1>Log-in</h1>
+        <h1>Register to Camagru</h1>
         <input class=forminput placeholder="Login" type="text" name="login" autofocus required />
         <br>
-        <input class=forminput placeholder="Password" type="password" name="passwd" required />
+        <input class=forminput placeholder="E-mail adress" type="email" name="email" required />
+        <br>
+        <input class=forminput placeholder="Password" type="password" name="passwd1" required />
+        <br>
+        <input class=forminput placeholder="Repeat Password" type="password" name="passwd2" required />
         <br>
         <input class=buttonin type="submit" name="submit" value="OK" />
     </p>

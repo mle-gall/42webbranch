@@ -11,7 +11,7 @@
                 <h1>Connection to DB failed !</h1>
                 <a>Database is unexistant, or database connection informations provided are false.</a>
                     <div class=buttoninput>
-                        <a href='setup.php' class=buttonin>Automatic Setup</a>
+                        <a href='config/setup.php' class=buttonin>Automatic Setup</a>
                     </div>
                 </a>
             </div>

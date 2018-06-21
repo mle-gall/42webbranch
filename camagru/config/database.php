@@ -1,7 +1,7 @@
 <?php
-$DB_DSN = '';
-$DB_USER = '';
-$DB_PASSWORD = '';
-$db = '';
-$admin_pw = '';
+$DB_DSN = 'mysql:host=localhost';
+$DB_USER = 'root';
+$DB_PASSWORD = 'root';
+$db = 'camagru';
+$admin_pw = 'toto';
 ?>

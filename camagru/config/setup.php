@@ -12,10 +12,7 @@ try
 {
     $bdd = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 
-    $bdd->exec("CREATE DATABASE `$db`;
-                CREATE USER '$DB_USER'@'localhost' IDENTIFIED BY '$DB_PASSWORD';
-                GRANT ALL ON `$db`.* TO '$DB_USER'@'localhost';
-                FLUSH PRIVILEGES;")
+    $bdd->exec("CREATE DATABASE `$db`;")
     or die(print_r($bdd->errorInfo(), true));
 }
 catch (PDOException $e)
@@ -38,14 +35,11 @@ catch(PDOException $e)
 {
     echo $e->getMessage();
 }
+
 create_table_user($bdd);
-$admin_pw = hash('sha512', $admin_pw);
-$req = $bdd->prepare('INSERT INTO USERS(Name, Password, Email) VALUES(:name, :passwd, :mail)');
-$req->execute(array(
-    'name' => "admin",
-    'passwd' => $admin_pw,
-    'mail' => "mail@example.com"
-));
+$hash = hash('sha512', $admin_pw);
+include('../user_functions.php');
+add_user("admin", $hash, "1", "admin@trolol.com", $bdd);
 create_table_pictures($bdd);
 create_table_comments($bdd);
 ?>

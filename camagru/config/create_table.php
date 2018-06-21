@@ -8,7 +8,7 @@ function create_table_user($bdd)
             ID INT( 11 ) AUTO_INCREMENT PRIMARY KEY,
             Name VARCHAR( 50 ) NOT NULL,
             Password VARCHAR( 200 ) NOT NULL,
-            Activated 
+            Activated VARCHAR( 2 ) NOT NULL,
             Email VARCHAR( 50 ) NOT NULL);" ;
             $bdd->exec($sql);
             print("Created $table Table.\n");
