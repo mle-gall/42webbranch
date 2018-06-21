@@ -3,7 +3,7 @@ $title = "Log-in to Camagru";
 include "header.php";
 ?>
     <div class=contentform>
-    <form class="formbg" action="auth_user.php" method="post">
+    <form class="formbg" action="create_user.php" method="post">
     <p>
         <?php
         if(isset($_GET["message"]) && $_GET["message"] === "error")
