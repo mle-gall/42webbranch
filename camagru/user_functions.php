@@ -20,7 +20,9 @@ function add_user($name, $pass, $activ, $mail, $bdd)
         ));
         if ($activ = "0")
         {
-            mail($mail, "Activate your account", "Hello, click on link below to activate your account :<br />$site_adress/activate?id=$name");
+            $nb = rand(0, 10);
+            $id = hash('sha512', 'camagru'.$nb);
+            mail($mail, "Activate your account", "Hello, click on link below to activate your account :<br />$site_adress/activate?id=$name$nb$id");
         }
         return TRUE;
     }

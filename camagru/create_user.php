@@ -2,18 +2,14 @@
 include('user_functions.php');
 if($_POST['submit'] === "OK" && isset($_POST['login']) && isset($_POST['email']) && isset($_POST['passwd1']) && isset($_POST['passwd2']))
 {
-    echo "there";
     if(hash('sha512', $_POST['passwd1']) === hash('sha512', $_POST['passwd2']))
     {
-        echo "there2";
         if(add_user($_POST['login'], hash('sha512', $_POST['passwd1']), 0, $_POST['email'], $bdd) === FALSE)
         {
-            echo "there3";
             header('Location: register.php?error=alreadyexists');
         }
         else
         {
-            echo "there4";
             header('Location: register.php');
         }
     }
