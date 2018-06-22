@@ -6,7 +6,7 @@
 </head>
 <body>
     <div class=warnbod>
-        <form class="warn" action="config/config-db.php" method="post">
+        <form class="warn" action="config/configure.php" method="post">
             <p>
                 <?php
                 if(isset($_GET['error']) && $_GET['error'] === 'cannotchange')
@@ -24,6 +24,8 @@
                 <input class=forminput placeholder="DB Name" type="text" name="name" autofocus required />
                 <br>
                 <input class=forminput placeholder="admin Password" type="text" name="admin_pw" autofocus required />
+                <br>
+                <input class=forminput placeholder="Website URL" type="text" name="adress" autofocus required />
                 <br>
                 <input class=buttonin type="submit" name="submit" value="OK" />
             </p>

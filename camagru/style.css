@@ -197,6 +197,14 @@ a.buttonin:hover {
 	margin:10px;
 }
 
+.msgsuccess
+{
+	width:100%;
+	color: #ffffff;
+	background-color: #51edb0;
+	margin:10px;
+}
+
 /* =====FOOTER===== */
 
 .footer {
