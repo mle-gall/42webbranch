@@ -13,7 +13,7 @@
             <a href=index.php><img class=logoimg src="uploads/icons/logo.svg" alt="Logo Camagru"/></a>
         </div>
         <?php
-            if (isset($_SESSION['connexion_status']) == 0 OR $_SESSION['connexion_status'] != 'connected')
+            if (isset($_SESSION['connexion_status']) == 0 || $_SESSION['connexion_status'] !== 'connected')
             {
                 echo "
                     <div class=icons>
@@ -22,6 +22,18 @@
                         </div>
                         <div class=menutab>
                             <a href=login.php><img class=menicon src='uploads/icons/login.svg'/></a>
+                        </div>
+                    </div>";
+            }
+            else if(isset($_SESSION['connexion_status']) && $_SESSION['connexion_status'] === 'connected')
+            {
+                echo "
+                    <div class=icons>
+                        <div class=menutab>
+                            <a href=take_pic.php><img class=menicon src='uploads/icons/register.svg'/></a>
+                        </div>
+                        <div class=menutab>
+                            <a href=unauth_user.php><img class=menicon src='uploads/icons/login.svg'/></a>
                         </div>
                     </div>";
             }

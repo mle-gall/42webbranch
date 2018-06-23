@@ -4,19 +4,21 @@ if($_POST['submit'] === "OK" && isset($_POST['login']) && isset($_POST['passwd']
 {
     if(log_user($_POST['login'], hash('sha512', $_POST['passwd']), $bdd) === "1")
     {
-        // header('Location: register.php?error=alreadyexists');
-        echo("Okey");
+        session_start();
+        $_SESSION['connexion_status'] = 'connected';
+        header('Location: index.php');
     }
     else if(log_user($_POST['login'], hash('sha512', $_POST['passwd']), $bdd) === "-1")
     {
-        echo("Account unactivated");
+        header('Location: login.php?error=unvalidatedaccount');
     }
     else if(log_user($_POST['login'], hash('sha512', $_POST['passwd']), $bdd) === "0")
     {
-        echo("Invalid Password");
+        header('Location: login.php?error=invalidpw');
     }
-    else {
-        echo"J'ai chié dans la kol";
+    else
+    {
+        header('Location: login.php');
     }
     // else
     // {
