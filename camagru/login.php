@@ -10,7 +10,7 @@ include "header.php";
             echo("<div class=msgsuccess><a>Your account has been activated. Welcome to Camagru !</a></div>");
         ?>
         <h1>Log-in</h1>
-        <input class=forminput placeholder="Login" type="text" name="login" autofocus required />
+        <input class=forminput placeholder="Login or email" type="text" name="login" autofocus required />
         <br>
         <input class=forminput placeholder="Password" type="password" name="passwd" required />
         <br>

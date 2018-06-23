@@ -6,7 +6,8 @@ if(isset($bdd) == 0)
 }
 function add_user($name, $pass, $activ, $mail, $bdd)
 {
-    $response = $bdd->query("SELECT * FROM USERS WHERE Name LIKE '".$name."' OR Email LIKE '".$mail."' LIMIT 1");
+    $response = $bdd->prepare("SELECT * FROM USERS WHERE Name LIKE ? OR Email LIKE ? LIMIT 1");
+    $response->execute(array($name, $mail));
     $data = $response->fetch();
     $response->closeCursor();
     if(empty($data))
@@ -36,15 +37,27 @@ function add_user($name, $pass, $activ, $mail, $bdd)
 }
 function log_user($name, $pass, $bdd)
 {
-    $response = $bdd->query("SELECT * FROM USERS WHERE Name LIKE '".$name."' OR Email LIKE '".$mail."'");
+    $response = $bdd->prepare("SELECT * FROM USERS WHERE Name LIKE ? OR Email LIKE ?");
+    $response->execute(array($name, $name));
     $data = $response->fetch();
     $response->closeCursor();
     if(!empty($data))
     {
-        if(hash('sha512', $pass) === $data['Password'] && $data['Activated'] != 0)
+        if($pass === $data['Password'])
         {
-            echo("Okey<br>");
+            if($data['Activated'] != 0)
+                return "1";
+            else
+            {
+                return "-1";
+            }
+        }
+        else
+        {
+            return "0";
         }
     }
+    else
+        return "0";
 }
 ?>
