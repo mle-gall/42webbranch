@@ -5,8 +5,8 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
 </head>
 <body>
-    <div class=warnbod>
-        <form class="warn" action="config/configure.php" method="post">
+    <div class=contentform>
+        <form class="formbg" action="config/configure.php" method="post">
             <p>
                 <?php
                 if(isset($_GET['error']) && $_GET['error'] === 'cannotchange')
