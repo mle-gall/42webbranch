@@ -18,10 +18,10 @@
                 echo "
                     <div class=icons>
                         <div class=menutab>
-                            <a href=register.php><img class=menicon src='uploads/icons/register.svg'/></a>
+                            <a href=register.php title='Register'><img class=menicon src='uploads/icons/register.svg'/></a>
                         </div>
                         <div class=menutab>
-                            <a href=login.php><img class=menicon src='uploads/icons/login.svg'/></a>
+                            <a href=login.php title='Log-In'><img class=menicon src='uploads/icons/login.svg'/></a>
                         </div>
                     </div>";
             }
@@ -30,10 +30,10 @@
                 echo "
                     <div class=icons>
                         <div class=menutab>
-                            <a href=take_pic.php><img class=menicon src='uploads/icons/register.svg'/></a>
+                            <a href=take_pic.php title='Take a Picture'><img class=menicon src='uploads/icons/camera.svg'/></a>
                         </div>
                         <div class=menutab>
-                            <a href=unauth_user.php><img class=menicon src='uploads/icons/login.svg'/></a>
+                            <a href=unauth_user.php title='Log-Out'><img class=menicon src='uploads/icons/logout.svg'/></a>
                         </div>
                     </div>";
             }
