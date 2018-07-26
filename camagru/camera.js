@@ -1,61 +1,62 @@
-// Older browsers might not implement mediaDevices at all, so we set an empty object first
- var video = document.querySelector('video');
-  var canvas = document.querySelector('canvas');
-  var ctx = canvas.getContext('2d');
-  var image = document.querySelector('img');
-if (navigator.mediaDevices === undefined) {
-  navigator.mediaDevices = {};
-}
+(function() {
 
-// Some browsers partially implement mediaDevices. We can't just assign an object
-// with getUserMedia as it would overwrite existing properties.
-// Here, we will just add the getUserMedia property if it's missing.
-if (navigator.mediaDevices.getUserMedia === undefined) {
-  navigator.mediaDevices.getUserMedia = function(constraints) {
+  var streaming = false,
+      video        = document.querySelector('#video'),
+      cover        = document.querySelector('#cover'),
+      canvas       = document.querySelector('#canvas'),
+      photo        = document.querySelector('#photo'),
+      startbutton  = document.querySelector('#startbutton'),
+      width = 320,
+      height = 0;
 
-    // First get ahold of the legacy getUserMedia, if present
-    var getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+  navigator.getMedia = ( navigator.getUserMedia ||
+                         navigator.webkitGetUserMedia ||
+                         navigator.mozGetUserMedia ||
+                         navigator.msGetUserMedia);
 
-    // Some browsers just don't implement it - return a rejected promise with an error
-    // to keep a consistent interface
-    if (!getUserMedia) {
-      return Promise.reject(new Error('getUserMedia is not implemented in this browser'));
+  navigator.getMedia(
+    {
+      video: true,
+      audio: false
+    },
+    function(stream) {
+      if (navigator.mozGetUserMedia) {
+        video.mozSrcObject = stream;
+      } else {
+        var vendorURL = window.URL || window.webkitURL;
+        video.src = vendorURL.createObjectURL(stream);
+      }
+      video.play();
+    },
+    function(err) {
+      console.log("An error occured! " + err);
     }
+  );
 
-    // Otherwise, wrap the call to the old navigator.getUserMedia with a Promise
-    return new Promise(function(resolve, reject) {
-      getUserMedia.call(navigator, constraints, resolve, reject);
-    });
+  video.addEventListener('canplay', function(ev){
+    if (!streaming) {
+      height = video.videoHeight / (video.videoWidth/width);
+      video.setAttribute('width', width);
+      video.setAttribute('height', height);
+      canvas.setAttribute('width', width);
+      canvas.setAttribute('height', height);
+      streaming = true;
+    }
+  }, false);
+
+  function takepicture() {
+    canvas.width = width;
+    canvas.height = height;
+    canvas.getContext('2d').drawImage(video, 0, 0, width, height);
+    var data = canvas.toDataURL('image/png');
+    var dataURL = canvas.toDataURL();
+    var canvasData = canvasElement.toDataURL("image/png");
   }
-}
-function snapshot() {
-      var cw = video.clientWidth;
-      var ch = video.clientHeight;
-      ctx.drawImage(video, 0, 0, cw, ch, 0, 0, cw / 2, ch / 3);
-      image.src = canvas.toDataURL();
-      image.height = ch;
-      image.width = cw;
-  }
 
-  video.addEventListener('click', snapshot, false);
-navigator.mediaDevices.getUserMedia({ audio: false, video: true })
-.then(function(stream) {
-  var video = document.querySelector('video');
-  // Older browsers may not have srcObject
- // if ("srcObject" in video) {
-    video.srcObject = stream;
- // } else {
-    // Avoid using this in new browsers, as it is going away.
-    //video.src = window.URL.createObjectURL(stream);
- // }
-  video.onloadedmetadata = function(e) {
-    video.play();
-  };
-})
-.catch(function(err) {
-  console.log(err.name + ": " + err.message);
-});
+ 
+  startbutton.addEventListener('click', function(ev){
+      takepicture();
+    ev.preventDefault();
+  }, false);
 
-function sendcoords(ev) {
-    console.log(ev);
-}
+})();

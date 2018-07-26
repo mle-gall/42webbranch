@@ -5,9 +5,12 @@ if($stickers = scandir("uploads/stickers"))
 {
     foreach($stickers as $key => $elem)
     {
-        if(exif_imagetype("uploads/stickers/".$elem) != 3)
+        if(file_exists("uploads/stickers/".$elem))
         {
-            unset($stickers[$key]);
+            if(mime_content_type('uploads/stickers/'.$elem) != "image/png")
+            {
+                unset($stickers[$key]);
+            }
         }
     }
 }
@@ -33,7 +36,11 @@ if($stickers = scandir("uploads/stickers"))
 <div class=middiv>
     <div class=picture>
         <video id="video"></video>
-        <canvas id="canvas" ondrag='sendcoords(ev)'></canvas>
+        <form class="form" action="" method="post">
+            <input id="inp_img" name="img" type="hidden" value="">
+            <button id="startbutton">Prendre une photo</button>
+        </form>
+        <canvas id="canvas"></canvas>
         <script type="text/javascript" src="camera.js"></script>
 
     </div>
