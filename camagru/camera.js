@@ -50,13 +50,22 @@
     canvas.getContext('2d').drawImage(video, 0, 0, width, height);
     var data = canvas.toDataURL('image/png');
     var dataURL = canvas.toDataURL();
-    var canvasData = canvasElement.toDataURL("image/png");
+    saveImage();
   }
 
- 
+
   startbutton.addEventListener('click', function(ev){
       takepicture();
     ev.preventDefault();
   }, false);
 
 })();
+
+function saveImage() {
+    var data = document.getElementById("canvas").toDataURL();
+    $.post("pic_save.php", {
+	       imageData : data
+       }, function(data) {
+	window.location = data;
+});
+}
