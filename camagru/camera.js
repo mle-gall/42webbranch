@@ -1,3 +1,5 @@
+//https://permadi.com/2010/10/html5-saving-canvas-image-data-using-php-and-ajax/
+
 (function() {
 
     var streaming = false,
@@ -57,7 +59,7 @@
             ajax.setRequestHeader('Content-Type', 'canvas/upload');
             //ajax.setRequestHeader('Content-TypeLength', postData.length);
 
-            ajax.send(postData);
+            ajax.send(canvasData);
         }
 
         function takepicture() {
