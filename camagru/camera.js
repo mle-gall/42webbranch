@@ -54,9 +54,7 @@
             }).then(res => res.text().then(json => console.log(json))).catch((err, status) => {
                 console.log(err, status);
             });
-            var video = document.getElementById("video");
-            video.style.display = 'none';
-            canvas.style.display = 'block';
+            var Video = document.getElementById("videostream");
 
         }
 
