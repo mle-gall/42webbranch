@@ -282,6 +282,7 @@ a.buttonin:hover {
 #canvas {
     width:100%;
     height: auto;
+    display: none;
 }
 .leftdiv {
     padding: 30px;

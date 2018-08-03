@@ -49,10 +49,18 @@
         function saveImage() {
             var canvas = document.getElementById("canvas");
             var canvasData = canvas.toDataURL("image/png");
-            var postData = "canvasData="+canvasData;
-            var debugConsole= document.getElementById("debugConsole");
-            debugConsole.value=canvasData;
+            window.fetch('pic_save.php', {
+                method: 'POST',
+                headers: {"Content-Type": "image/png"},
+                body: canvasData
+            }).then(res => res.text().then(json => console.log(json))).catch((err, status) => {
+                console.log(err, status);
+            });
+            var video = document.getElementById("video");
+            video.style.display = 'none';
+            canvas.style.display = 'block';
 
+<<<<<<< HEAD
             //alert("canvasData ="+canvasData );
             var ajax = new XMLHttpRequest();
             ajax.open("POST",'pic_save.php',false);
@@ -60,6 +68,8 @@
             //ajax.setRequestHeader('Content-TypeLength', postData.length);
 
             ajax.send(canvasData);
+=======
+>>>>>>> 764bc1bfa93fb68f7a6e31fb38ba168b18d59fcb
         }
 
         function takepicture() {
