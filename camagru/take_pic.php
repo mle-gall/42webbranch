@@ -38,7 +38,6 @@ if($stickers = scandir("uploads/stickers"))
         <video id="video"></video>
         <button id="startbutton">Prendre une photo</button>
         <canvas id="canvas"></canvas>
-        <textarea id="debugConsole" rows="10" cols="60">Data</textarea>
         <script type="text/javascript" src="camera.js"></script>
 
     </div>

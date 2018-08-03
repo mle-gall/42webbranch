@@ -1,15 +1,12 @@
 <?php
+$content = trim(file_get_contents("php://input"));
 
-$var = $_GLOBALS;
-$sar = serialize($var);
-file_put_contents("log", $sar);
-
-if (isset($GLOBALS["HTTP_RAW_POST_DATA"]))
+if (isset($content))
 {
-    $imageData = $GLOBALS['HTTP_RAW_POST_DATA'];
-    $filteredData = substr($imageData, strpos($imageData, ",")+1);
+    $filteredData = substr($content, strpos($content, ",")+1);
     $unencodedData = base64_decode($filteredData);
-    $fp = fopen( 'test.png', 'wb' );
+    $name = gmdate('Y-m-d h:i:s');
+    $fp = fopen( 'uploads/untreated/'.$name.'.png', 'wb' );
     fwrite( $fp, $unencodedData);
     fclose( $fp );
 }
