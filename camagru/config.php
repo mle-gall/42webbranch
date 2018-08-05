@@ -13,6 +13,10 @@
                 {
                     echo("<div class=msgerror><a>ERROR : Impossible to write in file since infos have already been set. Please manually edit them in config/database.php</a></div>");
                 }
+                if(isset($_GET['error']) && $_GET['error'] === 'missingelement')
+                {
+                    echo("<div class=msgerror><a>ERROR : Unable to configure database since at least one of the elements in database.php is missing.</a></div>");
+                }
                 ?>
                 <h1>Database Informations</h1>
                 <input class=forminput placeholder="DB Login" type="text" name="login" autofocus required />
