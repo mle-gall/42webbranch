@@ -64,7 +64,8 @@ body {
     align-items: center;
     height: 75px;
     width : 100%;
-    border-bottom: 1px solid #dbd8d8
+    border-bottom: 1px solid #dbd8d8;
+    z-index: 80;
 }
 
 .logodiv {
