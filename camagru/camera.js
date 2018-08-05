@@ -56,18 +56,9 @@
             }).then(res => res.text().then(json => console.log(json))).catch((err, status) => {
                 console.log(err, status);
             });
-            var Video = document.getElementById("videostream");
-
-<<<<<<< HEAD
-            //alert("canvasData ="+canvasData );
-            var ajax = new XMLHttpRequest();
-            ajax.open("POST",'pic_save.php',false);
-            ajax.setRequestHeader('Content-Type', 'canvas/upload');
-            //ajax.setRequestHeader('Content-TypeLength', postData.length);
-
-            ajax.send(canvasData);
-=======
->>>>>>> 764bc1bfa93fb68f7a6e31fb38ba168b18d59fcb
+            var video = document.getElementById("video");
+            video.style.display = 'none';
+            canvas.style.display = 'block';
         }
 
         function takepicture() {
