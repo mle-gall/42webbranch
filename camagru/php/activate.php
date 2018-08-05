@@ -19,18 +19,18 @@ if(isset($_GET['id']))
             }
             catch(PDOException $e)
             {
-                header('Location: login.php?error=noactivate');
+                header('Location: ../login.php?error=noactivate');
             }
-            header('Location: login.php?success=activate');
+            header('Location: ../login.php?success=activate');
         }
         else
         {
-            header('Location: login.php?error=noactivate');
+            header('Location: ../login.php?error=noactivate');
         }
     }
     else
     {
-        header('Location: login.php?error=noactivate');
+        header('Location: ../login.php?error=noactivate');
     }
 }
 ?>

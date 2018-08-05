@@ -7,7 +7,7 @@
     <body>
 <?php
 include('database.php');
-include('create_table.php');
+include('../php/create_table.php');
 try
 {
     $bdd = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
@@ -38,7 +38,7 @@ catch(PDOException $e)
 
 create_table_user($bdd);
 $hash = hash('sha512', $admin_pw);
-include('../user_functions.php');
+include('../php/user_functions.php');
 add_user("admin", $hash, "1", "admin@trolol.com", $bdd);
 create_table_pictures($bdd);
 create_table_comments($bdd);

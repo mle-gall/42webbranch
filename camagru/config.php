@@ -6,7 +6,7 @@
 </head>
 <body>
     <div class=contentform>
-        <form class="formbg" action="config/configure.php" method="post">
+        <form class="formbg" action="php/configure.php" method="post">
             <p>
                 <?php
                 if(isset($_GET['error']) && $_GET['error'] === 'cannotchange')

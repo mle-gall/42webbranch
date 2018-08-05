@@ -1,9 +1,9 @@
 <?php
 $title = "Log-in to Camagru";
-include "header.php";
+Include("php/header.php");
 ?>
     <div class=contentform>
-    <form class="formbg" action="auth_user.php" method="post">
+    <form class="formbg" action="php/auth_user.php" method="post">
     <p>
         <?php
         if(isset($_GET["success"]) && $_GET["success"] === "activate")
@@ -24,5 +24,5 @@ include "header.php";
     </div>
 
 <?php
-include "footer.php";
+include "php/footer.php";
 ?>

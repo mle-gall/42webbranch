@@ -1,5 +1,5 @@
 <?php
-include('config/database.php');
+include('../config/database.php');
 if(isset($bdd) == 0)
 {
     include('db_connect.php');

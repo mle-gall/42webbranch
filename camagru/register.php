@@ -1,9 +1,9 @@
 <?php
 $title = "Register to Camagru";
-include "header.php";
+include "php/header.php";
 ?>
     <div class=contentform>
-    <form class="formbg" action="create_user.php" method="post">
+    <form class="formbg" action="php/create_user.php" method="post">
     <p>
         <?php
         if(isset($_GET["error"]) && $_GET["error"] === "alreadyexists")
@@ -28,5 +28,5 @@ include "header.php";
     </div>
 
 <?php
-include "footer.php";
+include "php/footer.php";
 ?>

@@ -1,6 +1,6 @@
 <?php
 $title = "Camagru";
-Include("header.php");
+Include("php/header.php");
 ?>
 <div class=content>
     <div class=imgdiv>
@@ -34,5 +34,5 @@ Include("header.php");
     </div>
 </div>
 <?php
-Include("footer.php");
+Include("php/footer.php");
 ?>

@@ -6,20 +6,20 @@ if($_POST['submit'] === "OK" && isset($_POST['login']) && isset($_POST['email'])
     {
         if(add_user($_POST['login'], hash('sha512', $_POST['passwd1']), 0, $_POST['email'], $bdd) === FALSE)
         {
-            header('Location: register.php?error=alreadyexists');
+            header('Location: ../register.php?error=alreadyexists');
         }
         else
         {
-            header('Location: register.php');
+            header('Location: ../login.php');
         }
     }
     else
     {
-        header('Location: register.php?error=passdontmatch');
+        header('Location: ../register.php?error=passdontmatch');
     }
 }
 else
 {
-    header('Location: register.php?error=emptyfield');
+    header('Location: ../register.php?error=emptyfield');
 }
 ?>

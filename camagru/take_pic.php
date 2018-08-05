@@ -1,6 +1,11 @@
 <?php
 $title = "Take a Picture - Camagru";
-Include("header.php");
+Include("php/header.php");
+if ($_SESSION['login'] == '' OR $_SESSION['connexion_status'] != 'connected')
+{
+   header('HTTP/1.0 401 Unauthorized');
+   header('Location: index.php');
+}
 if($stickers = scandir("uploads/stickers"))
 {
     foreach($stickers as $key => $elem)
@@ -38,8 +43,10 @@ if($stickers = scandir("uploads/stickers"))
         <video id="video"></video>
         <button id="startbutton">Prendre une photo</button>
         <canvas id="canvas"></canvas>
-        <script type="text/javascript" src="camera.js"></script>
-
+        <script type="text/javascript" src="js/camera.js"></script>
+        <form action="take_pic.php" method="get">
+            <button id="retakebutton" onclick="redirect()"> Reprendre la photo</button>
+        </form>
     </div>
     <div class=take></div>
 </div>
