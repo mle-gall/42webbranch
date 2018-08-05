@@ -6,7 +6,7 @@ if (isset($content))
     $filteredData = substr($content, strpos($content, ",")+1);
     $unencodedData = base64_decode($filteredData);
     $name = gmdate('Y-m-d h:i:s');
-    $fp = fopen( 'uploads/untreated/'.$name.'.png', 'wb' );
+    $fp = fopen( '../uploads/untreated/'.$name.'.png', 'wb' );
     fwrite( $fp, $unencodedData);
     fclose( $fp );
 }

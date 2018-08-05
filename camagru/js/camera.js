@@ -21,28 +21,6 @@
     }).catch(function(err) {
         console.log("An error occured! " + err);
     });
-    // navigator.getMedia = ( navigator.getUserMedia ||
-    //     navigator.webkitGetUserMedia ||
-    //     navigator.mozGetUserMedia ||
-    //     navigator.msGetUserMedia);
-    //
-    //     navigator.getMedia(
-    //         {
-    //             video: true,
-    //             audio: false
-    //         },
-    //         function(stream) {
-    //             if (navigator.mozGetUserMedia) {
-    //                 video.mozSrcObject = stream;
-    //             } else {
-    //                 video.srcObject = stream;
-    //             }
-    //             video.play();
-    //         },
-    //         function(err) {
-    //             console.log("An error occured! " + err);
-    //         }
-    //     );
 
     video.addEventListener('canplay', function(ev){
         if (!streaming) {
