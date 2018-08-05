@@ -10,6 +10,9 @@
     startbutton  = document.querySelector('#startbutton'),
     width = 320,
     height = 0;
+    video.setAttribute('autoplay', '');
+    video.setAttribute('muted', '');
+    video.setAttribute('playsinline', '');
 
     navigator.mediaDevices.getUserMedia({audio: true, video: true}).then(function(stream){
         if (navigator.mozGetUserMedia) {
