@@ -46,7 +46,7 @@ function log_user($name, $pass, $bdd)
         if($pass === $data['Password'])
         {
             if($data['Activated'] != 0)
-                return "1";
+                return intval($data['ID']);
             else
             {
                 return "-1";
