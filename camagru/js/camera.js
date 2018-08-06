@@ -19,6 +19,7 @@
             video.mozSrcObject = stream;
         } else {
             video.srcObject = stream;
+            document.body.appendChild(video);
         }
         video.play();
     }).catch(function(err) {
