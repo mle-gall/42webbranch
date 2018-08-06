@@ -14,7 +14,7 @@
     video.setAttribute('muted', '');
     video.setAttribute('playsinline', '');
 
-    navigator.mediaDevices.getUserMedia({audio: true, video: true}).then(function(stream){
+    navigator.mediaDevices.getUserMedia({audio: false, video: true}).then(function(stream){
         if (navigator.mozGetUserMedia) {
             video.mozSrcObject = stream;
         } else {
