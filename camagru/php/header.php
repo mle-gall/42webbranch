@@ -8,6 +8,8 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes" />
+    <script type="text/javascript" src="js/standalone.js"></script>
+
 </head>
 <body>
     <div class=headbar>
