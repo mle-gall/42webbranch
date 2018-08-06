@@ -42,7 +42,7 @@ if($stickers = scandir("uploads/stickers"))
     <div class=picture>
         <video id="video"></video>
         <button id="startbutton">Prendre une photo</button>
-        <canvas id="canvas"></canvas>
+        <canvas id="canvas" width=320 height=240></canvas>
         <script type="text/javascript" src="js/camera.js"></script>
         <form action="take_pic.php" method="get">
             <button id="retakebutton" onclick="redirect()"> Reprendre la photo</button>

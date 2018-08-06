@@ -8,7 +8,7 @@
     canvas       = document.querySelector('#canvas'),
     photo        = document.querySelector('#photo'),
     startbutton  = document.querySelector('#startbutton'),
-    width = 320,
+    width = 400,
     height = 0;
     video.setAttribute('autoplay', '');
     video.setAttribute('muted', '');
@@ -46,24 +46,24 @@
         }).then(res => res.text().then(json => console.log(json))).catch((err, status) => {
             console.log(err, status);
         });
-        var video = document.getElementById("video");
-        var tbutton = document.getElementById("startbutton");
-        var rbutton = document.getElementById("retakebutton");
-        var stickers = document.getElementsByClassName("stickerprev");
-        video.style.display = 'none';
+        document.getElementById("video").style.display = 'none';
+        document.getElementById("startbutton").style.display = 'none';
+        document.getElementById("retakebutton").style.display = 'block';
         canvas.style.display = 'block';
-        tbutton.style.display = 'none';
-        rbutton.style.display = 'block';
-        for(var i = stickers.length - 1; i >= 0; --i)
-        {
-            stickers[i].style.opacity = '1';
-        }
+        document.querySelectorAll('.stickerprev').forEach(sticker => {
+            sticker.style.opacity = '1';
+        	sticker.addEventListener('dragend', e => {
+        		let coords = new Array(document.getElementById('canvas').getBoundingClientRect()).map(rect => {
+                    return [(e.clientX - rect.left) - 26, (e.clientY - rect.top) + 26].join();
+        		});
+        console.log(`${e.target.alt},${coords}`);
+        		fetch('urlServer', {body: `${e.target.alt},${coords}`}).then(res => console.log(res)).catch(err => console.log(err));
+        	});
+        });
     }
 
     function takepicture() {
-        canvas.width = width;
-        canvas.height = height;
-        canvas.getContext('2d').drawImage(video, 0, 0, width, height);
+        canvas.getContext('2d').drawImage(video, 0, 0, 320, 240);
         var data = canvas.toDataURL('image/png');
         var dataURL = canvas.toDataURL();
         saveImage();
