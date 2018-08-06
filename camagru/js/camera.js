@@ -54,7 +54,7 @@
             sticker.style.opacity = '1';
         	sticker.addEventListener('dragend', e => {
         		let coords = new Array(document.getElementById('canvas').getBoundingClientRect()).map(rect => {
-                    return [(e.clientX - rect.left) - 26, (e.clientY - rect.top) + 26].join();
+                    return [(e.clientX - rect.left), (e.clientY - rect.top)].join();
         		});
         console.log(`${e.target.alt},${coords}`);
         		fetch('urlServer', {body: `${e.target.alt},${coords}`}).then(res => console.log(res)).catch(err => console.log(err));

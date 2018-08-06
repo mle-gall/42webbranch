@@ -166,6 +166,16 @@ body {
     width: 20%;
 }
 
+textarea,
+input.text,
+input[type="text"],
+input[type="button"],
+input[type="submit"],
+.input-checkbox {
+-webkit-appearance: none;
+border-radius: 0;
+}
+
 .buttoninput {
     margin-left:20px;
     width:500px;
