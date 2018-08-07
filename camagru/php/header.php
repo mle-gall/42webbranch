@@ -8,7 +8,8 @@ session_start();
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-title" content="Camagru">
+    <meta name="apple-mobile-web-app-title" content="Camagru"/>
+    <meta name="application-name" content="Camagru"/>
     <script type="text/javascript" src="js/standalone.js"></script>
     <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
