@@ -8,8 +8,8 @@
     canvas       = document.querySelector('#canvas'),
     photo        = document.querySelector('#photo'),
     startbutton  = document.querySelector('#startbutton'),
-    width = 400,
-    height = 0;
+    width = 320,
+    height = 240;
     video.setAttribute('autoplay', '');
     video.setAttribute('muted', '');
     video.setAttribute('playsinline', '');
@@ -39,13 +39,6 @@
     function saveImage() {
         var canvas = document.getElementById("canvas");
         var canvasData = canvas.toDataURL("image/png");
-        window.fetch('php/pic_save.php', {
-            method: 'POST',
-            headers: {"Content-Type": "image/png"},
-            body: canvasData
-        }).then(res => res.text().then(json => console.log(json))).catch((err, status) => {
-            console.log(err, status);
-        });
         document.getElementById("video").style.display = 'none';
         document.getElementById("startbutton").style.display = 'none';
         document.getElementById("retakebutton").style.display = 'block';
@@ -56,8 +49,15 @@
         		let coords = new Array(document.getElementById('canvas').getBoundingClientRect()).map(rect => {
                     return [(e.clientX - rect.left), (e.clientY - rect.top)].join();
         		});
+                console.log(coords);
         console.log(`${e.target.alt},${coords}`);
-        		fetch('urlServer', {body: `${e.target.alt},${coords}`}).then(res => console.log(res)).catch(err => console.log(err));
+        		window.fetch('php/create_pic.php', {
+                    method: 'POST',
+                    headers: {"Content-Type": "string"},
+                    body: `${canvasData},${e.target.alt},${coords}`
+                }).then(res => res.text().then(json => console.log(json))).catch((err, status) => {
+                    console.log(err, status);
+                });
         	});
         });
     }
@@ -74,4 +74,5 @@
         takepicture();
         ev.preventDefault();
     }, false);
+
 })();
