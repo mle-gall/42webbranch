@@ -19,10 +19,8 @@ function add_user($name, $pass, $activ, $mail, $bdd)
             'activ' => $activ,
             'mail' => $mail
         ));
-        echo ("okey0");
         if ($activ === 0)
         {
-            echo ("okey1");
             $nb = rand(0, 9);
             $id = hash('sha512', 'camagru'.$nb);
             mail($mail, "Activate your account", "Hello, click on link below to activate your account :<br />$site_adress/activate?id=$nb$name-$id");

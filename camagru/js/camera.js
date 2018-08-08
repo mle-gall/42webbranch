@@ -4,9 +4,7 @@
 
     var streaming = false,
     video        = document.querySelector('#video'),
-    cover        = document.querySelector('#cover'),
     canvas       = document.querySelector('#canvas'),
-    photo        = document.querySelector('#photo'),
     startbutton  = document.querySelector('#startbutton'),
     width = 320,
     height = 240;
@@ -42,22 +40,36 @@
         document.getElementById("video").style.display = 'none';
         document.getElementById("startbutton").style.display = 'none';
         document.getElementById("retakebutton").style.display = 'block';
+        document.getElementById('lab').style.display = 'none';
+        document.getElementById('or').style.display = 'none';
+        document.getElementById('text1').style.display = 'none';
+        document.getElementById('text2').style.display = 'none';
         canvas.style.display = 'block';
         document.querySelectorAll('.stickerprev').forEach(sticker => {
             sticker.style.opacity = '1';
-        	sticker.addEventListener('dragend', e => {
-        		let coords = new Array(document.getElementById('canvas').getBoundingClientRect()).map(rect => {
+            sticker.addEventListener('dragend', e => {
+                let coords = new Array(document.getElementById('canvas').getBoundingClientRect()).map(rect => {
                     return [(e.clientX - rect.left), (e.clientY - rect.top)].join();
-        		});
-        console.log(`${e.target.alt},${coords}`);
-        		window.fetch('php/create_pic.php', {
+                });
+                window.fetch('php/create_pic.php', {
                     method: 'POST',
                     headers: {"Content-Type": "string"},
                     body: `${canvasData},${e.target.alt},${coords}`
-                }).then(res => res.text().then(json => console.log(json))).catch((err, status) => {
-                    console.log(err, status);
-                });
-        	});
+                }).then(res => res.text().then(resp => {
+                    var image = 'data:image/png;base64,' + resp;
+                    var img = new Image();
+                    img.onload = function () {
+                        canvas.getContext('2d').drawImage(img, 0, 0, 320, 240);
+                    }
+                    img.src = image;
+                    var publishbutton = document.getElementById("publishbutton");
+                    publishbutton.style.display = 'block';
+                    publishbutton.addEventListener('click', function(ev){
+                        sendpicture();
+                        ev.preventDefault();
+                    }, false);
+                }));
+            });
         });
     }
 
@@ -68,10 +80,45 @@
         saveImage();
     }
 
+    function sendpicture() {
+        var canvas = document.getElementById("canvas");
+        var canvasData = canvas.toDataURL("image/png");
+        window.fetch('php/save_pic.php', {
+            method: 'POST',
+            headers: {"Content-Type": "string"},
+            credentials:"same-origin",
+            body: `${canvasData}`
+        })
+        window.location.href = "/index.php";
+    }
 
     startbutton.addEventListener('click', function(ev){
         takepicture();
         ev.preventDefault();
     }, false);
 
+    var inputFile = document.createElement('input');
+    inputFile.type = 'file';
+    inputFile.setAttribute("id", "imginput");
+    inputFile.setAttribute("div", "input-file");
+    inputFile.accept = 'image/png';
+    inputFile.addEventListener('change', function (evt) {
+        var file    = document.querySelector('input[type=file]').files[0];
+        var reader  = new FileReader();
+
+        reader.addEventListener("load", function () {
+          var res = reader.result;
+          var imgcanvas = new Image();
+          imgcanvas.onload = function () {
+              canvas.getContext('2d').drawImage(imgcanvas, 0, 0, 320, 240);
+              saveImage();
+          }
+          imgcanvas.src = res;
+        }, false);
+
+        if (file) {
+          reader.readAsDataURL(file);
+        }
+    });
+    document.getElementsByClassName("picture")[0].appendChild(inputFile);
 })();

@@ -3,8 +3,8 @@ $title = "Take a Picture - Camagru";
 Include("php/header.php");
 if ($_SESSION['login'] == '' OR $_SESSION['connexion_status'] != 'connected')
 {
-   header('HTTP/1.0 401 Unauthorized');
-   header('Location: index.php');
+    header('HTTP/1.0 401 Unauthorized');
+    header('Location: index.php');
 }
 if($stickers = scandir("uploads/stickers"))
 {
@@ -37,24 +37,31 @@ if($stickers = scandir("uploads/stickers"))
             }
         }
         ?>
-</div>
-<div class=middiv>
-    <div class=picture>
-        <video id="video"></video>
-        <button id="startbutton">Prendre une photo</button>
-        <canvas id="canvas" width=320 height=240></canvas>
-        <script type="text/javascript" src="js/camera.js"></script>
-        <form action="take_pic.php" method="get">
-            <button id="retakebutton" onclick="redirect()"> Reprendre la photo</button>
-        </form>
     </div>
-    <div class=take></div>
-</div>
-<div class=shotshistory>
-    <div class=picture>
+    <div class=middiv>
+        <div class=picture>
+            <video id="video"></video>
+            <button class=buttoncam id="startbutton">Prendre une photo</button>
+            <div id=or>
+                <a>Or</a>
+            </div>
+            <label for="imginput" class="label-file" id="lab">
+                Upload Image
+            </label>
+            <canvas id="canvas" width=320 height=240></canvas>
+            <script type="text/javascript" src="js/camera.js"></script>
+            <form action="take_pic.php" method="get">
+                <button class=buttoncam id="retakebutton" onclick="redirect()"> Take Again</button>
+            </form>
+            <button class=buttoncam id="publishbutton"> Publish-it</button>
+        </div>
+        <div class=take></div>
     </div>
-    <div class=take>
+    <div class=shotshistory>
+        <div class=picture>
+        </div>
+        <div class=take>
 
+        </div>
     </div>
-</div>
 </div>
