@@ -49,7 +49,6 @@
         		let coords = new Array(document.getElementById('canvas').getBoundingClientRect()).map(rect => {
                     return [(e.clientX - rect.left), (e.clientY - rect.top)].join();
         		});
-                console.log(coords);
         console.log(`${e.target.alt},${coords}`);
         		window.fetch('php/create_pic.php', {
                     method: 'POST',
