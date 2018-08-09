@@ -113,7 +113,7 @@
     inputFile.type = 'file';
     inputFile.setAttribute("id", "imginput");
     inputFile.setAttribute("div", "input-file");
-    inputFile.accept = 'image/png';
+    inputFile.accept = 'image/*';
     inputFile.addEventListener('change', function (evt) {
         var file    = document.querySelector('input[type=file]').files[0];
         var reader  = new FileReader();
