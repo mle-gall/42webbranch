@@ -113,7 +113,6 @@
     inputFile.type = 'file';
     inputFile.setAttribute("id", "imginput");
     inputFile.setAttribute("div", "input-file");
-    inputFile.setAttribute("capture", "camera");
     inputFile.accept = 'image/*';
     inputFile.addEventListener('change', function (evt) {
         var file    = document.querySelector('input[type=file]').files[0];
