@@ -1,5 +1,3 @@
-//https://permadi.com/2010/10/html5-saving-canvas-image-data-using-php-and-ajax/
-
 (function() {
 
     var streaming = false,
@@ -30,6 +28,7 @@
     else {
         document.getElementById("video").style.display = 'none';
         document.getElementById("startbutton").style.display = 'none';
+        document.getElementById('or').style.display = 'none';
         usingcam = false;
     }
     video.addEventListener('canplay', function(ev){

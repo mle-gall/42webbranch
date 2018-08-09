@@ -59,9 +59,10 @@ if($stickers = scandir("uploads/stickers"))
     </div>
     <div class=shotshistory>
         <div class=picture>
-        </div>
-        <div class=take>
 
         </div>
     </div>
 </div>
+<?php
+    Include("php/footer.php");
+?>
