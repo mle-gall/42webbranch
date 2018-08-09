@@ -15,11 +15,9 @@
     if (navigator.mediaDevices.getUserMedia)
     {
         navigator.mediaDevices.getUserMedia({audio: false, video: true}).then(function(stream){
-            if (navigator.mozGetUserMedia) {
-                video.mozSrcObject = stream;
-            } else {
-                video.srcObject = stream;
-            }
+
+            video.srcObject = stream;
+
             video.play();
         }).catch(function(err) {
             console.log("An error occured! " + err);
@@ -54,33 +52,33 @@
         canvas.style.display = 'block';
         document.querySelectorAll('.stickerprev').forEach(sticker => {
             sticker.style.opacity = '1';
-            sticker.addEventListener('dragend', e => {
-                let coords = new Array(document.getElementById('canvas').getBoundingClientRect()).map(rect => {
-                    console.log((e.clientX), (e.clientY));
-                    return [(e.clientX - rect.left), (e.clientY - rect.top)].join();
-                });
-
-                window.fetch('php/create_pic.php', {
-                    method: 'POST',
-                    headers: {"Content-Type": "string"},
-                    body: `${canvasData},${e.target.alt},${coords}`
-                }).then(res => res.text().then(resp => {
-                    if(resp != 0)
-                    {
-                        var image = 'data:image/png;base64,' + resp;
-                        var img = new Image();
-                        img.onload = function () {
-                            canvas.getContext('2d').drawImage(img, 0, 0, 320, 240);
+            sticker.addEventListener('dragend', ev => {
+                document.addEventListener('mouseover', e => {
+                    let coords = new Array(document.getElementById('canvas').getBoundingClientRect()).map(rect => {
+                        return [(e.clientX - rect.left), (e.clientY - rect.top)].join();
+                    });
+                    window.fetch('php/create_pic.php', {
+                        method: 'POST',
+                        headers: {"Content-Type": "string"},
+                        body: `${canvasData},${ev.target.alt},${coords}`
+                    }).then(res => res.text().then(resp => {
+                        if(resp != 0)
+                        {
+                            var image = 'data:image/png;base64,' + resp;
+                            var img = new Image();
+                            img.onload = function () {
+                                canvas.getContext('2d').drawImage(img, 0, 0, 320, 240);
+                            }
+                            img.src = image;
+                            var publishbutton = document.getElementById("publishbutton");
+                            publishbutton.style.display = 'block';
+                            publishbutton.addEventListener('click', function(ev){
+                                sendpicture();
+                                ev.preventDefault();
+                            }, false);
                         }
-                        img.src = image;
-                        var publishbutton = document.getElementById("publishbutton");
-                        publishbutton.style.display = 'block';
-                        publishbutton.addEventListener('click', function(ev){
-                            sendpicture();
-                            ev.preventDefault();
-                        }, false);
-                    }
-                }));
+                    }));
+                }, { once: true });
             });
         });
     }
@@ -101,7 +99,7 @@
             credentials:"same-origin",
             body: `${canvasData}`
         })
-        window.location.href = "/index.php";
+        window.location.href = "index.php";
     }
 
     startbutton.addEventListener('click', function(ev){
@@ -117,7 +115,6 @@
     inputFile.addEventListener('change', function (evt) {
         var file    = document.querySelector('input[type=file]').files[0];
         var reader  = new FileReader();
-
         reader.addEventListener("load", function () {
             var res = reader.result;
             var imgcanvas = new Image();
@@ -127,7 +124,6 @@
             }
             imgcanvas.src = res;
         }, false);
-
         if (file) {
             reader.readAsDataURL(file);
         }
