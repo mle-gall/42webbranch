@@ -26,9 +26,8 @@ if (isset($content))
     }
     while($data = $req->fetch())
     {
-
         print_r($data);
-        echo '<br';
+        echo '<br />';
     }
 }
 ?>
