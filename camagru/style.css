@@ -267,7 +267,7 @@ a.buttonin:hover {
 }
 
 .or {
-    margin: 40px;
+    margin: 30px;
 }
 
 .label-file {
@@ -378,6 +378,7 @@ a.buttonin:hover {
     margin: 20px;
     opacity: 0.4;
     filter: alpha(opacity=40);
+    -khtml-user-drag: element;
 }
 
 .label-file {

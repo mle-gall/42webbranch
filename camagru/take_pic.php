@@ -41,8 +41,8 @@ if($stickers = scandir("uploads/stickers"))
     <div class=middiv>
         <div class=picture>
             <video id="video"></video>
-            <button class=buttoncam id="startbutton">Prendre une photo</button>
-            <div id=or>
+            <button class=buttoncam id="startbutton">Take Picture</button>
+            <div class=or id=or>
                 <a>Or</a>
             </div>
             <label for="imginput" class="label-file" id="lab">
