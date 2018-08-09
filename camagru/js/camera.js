@@ -97,14 +97,18 @@
 
     function sendpicture() {
         var canvas = document.getElementById("canvas");
-        var canvasData = canvas.toDataURL("image/png");
+        var canvasDatasend = canvas.toDataURL("image/png");
         window.fetch('php/save_pic.php', {
             method: 'POST',
             headers: {"Content-Type": "string"},
             credentials:"same-origin",
-            body: `${canvasData}`
+            body: canvasDatasend
+        }).then(res => {
+            if(res != 'error')
+            {
+                window.location.href = "take_pic.php";
+            }
         })
-        window.location.href = "index.php";
     }
 
     startbutton.addEventListener('click', function(ev){

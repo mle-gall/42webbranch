@@ -6,23 +6,34 @@ if (isset($_SESSION['id']) AND $_SESSION['connexion_status'] === 'connected')
 {
     try
     {
-        echo($_SESSION['id']);
         $bdd = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
         $sql ="USE ".$db.";";
         $bdd->exec($sql);
-        $req = $bdd->prepare('SELECT * FROM `pictures` WHERE `CreatorID` LIKE ?');
+        $req = $bdd->prepare('SELECT * FROM `pictures` WHERE `CreatorID` LIKE ? ORDER BY ID DESC');
         $req->execute(array(intval($_SESSION['id'])));
     }
     catch (PDOException $e)
     {
+        echo(0);
         die('Erreur : ' . $e->getMessage());
     }
+    $i = 0;
     while($data = $req->fetch())
     {
+        echo('<div class=sidepic>
+        <img src=uploads/images/'.$data['link'].' class=prev />
+        <div class="removebutton">
+        <a>Remove Picture</a>
+        </div>
+        </div>');
+        $i = 1;
+    }
+    if ($i = 0) {
+        echo(0);
     }
     $req->closeCursor();
 }
 else {
-    echo("not ok\n");
+    echo('0');
 }
 ?>

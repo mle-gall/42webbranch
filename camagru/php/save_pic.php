@@ -13,7 +13,7 @@ if (isset($content) && isset($_SESSION['id']) AND $_SESSION['connexion_status'] 
     }
     $filteredData = substr($content, strpos($content, ",")+1);
     $unencodedData = base64_decode($filteredData);
-    $name = gmdate('Y-m-d h:i:s');
+    $name = gmdate('Y-m-d.h:i:s');
     $fp = fopen( '../uploads/images/'.$name.'.png', 'wb' );
     fwrite( $fp, $unencodedData);
     fclose( $fp );
