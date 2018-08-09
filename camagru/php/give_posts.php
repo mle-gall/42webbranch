@@ -1,7 +1,6 @@
 <?php
 Include('../config/database.php');
-// $content = trim(file_get_contents("php://input"));
-$content = '00001.04.1';
+$content = trim(file_get_contents("php://input"));
 
 if (isset($content))
 {
@@ -16,7 +15,7 @@ if (isset($content))
         $req->closeCursor();
         $count = $req->fetch();
         $min = intval($count) - $delta[0];
-        $max = intval($count) - ($delta[0] + $delta[1]); 
+        $max = intval($count) - ($delta[0] + $delta[1]);
         $req = $bdd->prepare('SELECT * FROM `PICTURES` WHERE `ID` BETWEEN ? AND ?;');
         $req->execute(array(intval($delta[0]), intval($delta[1])));
         $req->closeCursor();
