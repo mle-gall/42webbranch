@@ -3,6 +3,7 @@
 (function() {
 
     var streaming = false,
+    usingcam = false,
     video        = document.querySelector('#video'),
     canvas       = document.querySelector('#canvas'),
     startbutton  = document.querySelector('#startbutton'),
@@ -12,23 +13,25 @@
     video.setAttribute('muted', '');
     video.setAttribute('playsinline', '');
 
-    if (navigator.mediaDevices.getUserMedia)
-    {
+    function hasGetUserMedia(){
+        return !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
+    }
+
+    if (hasGetUserMedia()) {
         navigator.mediaDevices.getUserMedia({audio: false, video: true}).then(function(stream){
-
             video.srcObject = stream;
-
             video.play();
+            usingcam = true;
         }).catch(function(err) {
-            console.log("An error occured! " + err);
+            usingcam = false;
+
         });
     }
     else {
         document.getElementById("video").style.display = 'none';
         document.getElementById("startbutton").style.display = 'none';
-        document.getElementById('or').style.display = 'none';
+        usingcam = false;
     }
-
     video.addEventListener('canplay', function(ev){
         if (!streaming) {
             height = video.videoHeight / (video.videoWidth/width);
@@ -47,7 +50,10 @@
         document.getElementById("retakebutton").style.display = 'block';
         document.getElementById('lab').style.display = 'none';
         document.getElementById('or').style.display = 'none';
-        video.srcObject.getTracks().forEach(track => track.stop())
+        if (video.srcObject)
+        {
+            video.srcObject.getTracks().forEach(track => track.stop())
+        }
         canvas.style.display = 'block';
         document.querySelectorAll('.stickerprev').forEach(sticker => {
             sticker.style.opacity = '1';
