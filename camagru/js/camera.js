@@ -42,7 +42,6 @@
 
     function saveImage() {
         var canvas = document.getElementById("canvas");
-        var canvasData = canvas.toDataURL("image/png");
         document.getElementById("video").style.display = 'none';
         document.getElementById("startbutton").style.display = 'none';
         document.getElementById("retakebutton").style.display = 'block';
@@ -54,9 +53,10 @@
             sticker.style.opacity = '1';
             sticker.addEventListener('dragend', ev => {
                 document.addEventListener('mouseover', e => {
-                    let coords = new Array(document.getElementById('canvas').getBoundingClientRect()).map(rect => {
+                    let coords = new Array(canvas.getBoundingClientRect()).map(rect => {
                         return [(e.clientX - rect.left), (e.clientY - rect.top)].join();
                     });
+                    var canvasData = canvas.toDataURL("image/png");
                     window.fetch('php/create_pic.php', {
                         method: 'POST',
                         headers: {"Content-Type": "string"},

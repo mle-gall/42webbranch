@@ -7,6 +7,10 @@ if(isset($bdd) == 0)
 }
 if (isset($content) && isset($_SESSION['id']) AND $_SESSION['connexion_status'] === 'connected')
 {
+    if(!file_exists('../uploads/images'))
+    {
+        mkdir('../uploads/images');
+    }
     $filteredData = substr($content, strpos($content, ",")+1);
     $unencodedData = base64_decode($filteredData);
     $name = gmdate('Y-m-d h:i:s');
