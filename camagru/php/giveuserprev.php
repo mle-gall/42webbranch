@@ -9,7 +9,7 @@ if (isset($_SESSION['id']) AND $_SESSION['connexion_status'] === 'connected')
         $bdd = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
         $sql ="USE ".$db.";";
         $bdd->exec($sql);
-        $req = $bdd->prepare('SELECT * FROM `pictures` WHERE `CreatorID` LIKE ? ORDER BY ID DESC');
+        $req = $bdd->prepare('SELECT * FROM `PICTURES` WHERE `CreatorID` LIKE ? ORDER BY ID DESC');
         $req->execute(array(intval($_SESSION['id'])));
     }
     catch (PDOException $e)
