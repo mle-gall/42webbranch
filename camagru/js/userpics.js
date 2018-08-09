@@ -17,7 +17,6 @@ function addbutton() {
     document.querySelectorAll('.removebutton').forEach( button => {
         button.addEventListener('click', e => {
             name = button.id;
-            console.log(name);
             window.fetch('php/del_pic.php', {
                 method: 'POST',
                 headers: {"Content-Type": "string"},
