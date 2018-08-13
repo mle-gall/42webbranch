@@ -131,6 +131,11 @@ body {
     height: 20px;
 }
 
+.likebtn {
+    padding: 15px;
+    height: 20px;
+}
+
 .comsection {
     padding-bottom: 10px;
 }

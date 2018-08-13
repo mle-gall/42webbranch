@@ -44,6 +44,7 @@
         add_user("admin", $hash, "1", "admin@trolol.com", $bdd);
         create_table_pictures($bdd);
         create_table_comments($bdd);
+        create_table_likes($bdd);
     }
     else {
         header('Location: ../config.php?error=missingelement');

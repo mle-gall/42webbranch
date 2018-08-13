@@ -53,5 +53,22 @@ function create_table_comments($bdd)
         echo $e->getMessage();
     }
 }
+function create_table_likes($bdd)
+{
+    $table = "LIKES";
+    try
+    {
+        $sql = "CREATE TABLE IF NOT EXISTS $table(
+            ID INT( 11 ) AUTO_INCREMENT PRIMARY KEY,
+            USER VARCHAR( 50 ) NOT NULL,
+            PicID VARCHAR( 200 ) NOT NULL);";
+            $bdd->exec($sql);
+            print("Created $table Table.\n");
+    }
+    catch(PDOException $e)
+    {
+        echo $e->getMessage();
+    }
+}
 
 ?>
