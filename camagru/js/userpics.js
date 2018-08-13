@@ -5,11 +5,11 @@ window.fetch('php/giveuserprev.php', {
 }).then(res => res.text().then(resp => {
     var div = document.getElementById('rightdiv');
     if(resp != 0) {
-        div.innerHTML += resp;
+        div.innerHTML += '<div class=sidepic><h3>Shot History</h3></div>' + resp;
         addbutton();
     }
     else {
-        div.innerHTML += "<div class=sidepic><a>Your pictures will be displayed here.</a></div>";
+        div.innerHTML += '<div class=sidepic><h3>Shot History</h3></div><div class=sidepic><a>Your pictures will be displayed here.</a></div>';
     }
 }));
 

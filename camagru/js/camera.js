@@ -2,6 +2,7 @@
 
     var streaming = false,
     usingcam = false,
+    addlistener = false,
     video        = document.querySelector('#video'),
     canvas       = document.querySelector('#canvas'),
     startbutton  = document.querySelector('#startbutton'),
@@ -77,10 +78,14 @@
                             img.src = image;
                             var publishbutton = document.getElementById("publishbutton");
                             publishbutton.style.display = 'block';
-                            publishbutton.addEventListener('click', function(ev){
-                                sendpicture();
-                                ev.preventDefault();
-                            }, false);
+                            if(addlistener == false)
+                            {
+                                addlistener = true;
+                                publishbutton.addEventListener('click', function(ev){
+                                    sendpicture();
+                                    ev.preventDefault();
+                                }, false);
+                            }
                         }
                     }));
                 }, { once: true });

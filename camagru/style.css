@@ -105,9 +105,12 @@ body {
 }
 
 .pic {
-    background-color: red;
     width:100%;
-    padding-top: 100%
+}
+
+.pic img {
+    width: 100%;
+    height: auto;
 }
 
 .usr {
