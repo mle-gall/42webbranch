@@ -46,7 +46,7 @@ if (isset($content))
     {
         if (isset($elem['link']))
         {
-            if (getLikeForId($elem['CreatorID'], $elem['link']) === 1)
+            if (getLikeForId($_SESSION['id'], $elem['link']) === 1)
             {
                 $likeurl = 'uploads/icons/liked.svg';
             }
