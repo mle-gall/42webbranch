@@ -1,4 +1,5 @@
 <?php
+include("utils.php");
 $content = trim(file_get_contents("php://input"));
 session_start();
 
@@ -8,13 +9,14 @@ if(isset($bdd) == 0)
 }
 if (isset($content))
 {
+    console.log($content);
     if($content !== '')
     {
         try
         {
             $sql ="USE ".$db.";";
             $bdd->exec($sql);
-            $req = $bdd->prepare('SELECT * FROM `PICTURES` WHERE `link` > ? LIMIT 10');
+            $req = $bdd->prepare('SELECT * FROM `PICTURES` WHERE `link` < ? ORDER by `id` DESC LIMIT 10');
             $req->execute(array($content));
         }
         catch (PDOException $e)
@@ -56,11 +58,11 @@ if (isset($content))
             }
             echo "<div class=imgdiv id=".$elem['link'].">
                     <div class=usr>
-                        <a>";
+                        <p>";
                         echo(getNameForID($elem['CreatorID']));
                         echo $creatorname['Name'];
                         echo "
-                        </a>
+                        </p>
                     </div>
                     <div class=pic>
                         <img src='uploads/images/".$elem['link']."' />
@@ -69,14 +71,15 @@ if (isset($content))
                         <div class=actions>
                             <a class=like><img id='".$elem['link']."' class=likebtn src='".$likeurl."'/></a>
                             <a class=like><img class=acticon src='uploads/icons/comment.svg'/></a>
+                            <a class=comment id='".$elem['link']."likes'>loading...</a>
                         </div>
-                        <a class=comment id='".$elem['link']."likes'>loading...</a>
-                        <div class=comment>
-                        <div class=username>
-                            <b>Nom</b>
+                        <div class=comments id='".$elem['link']."com'>
+
                         </div>
-                        <div class=text>
-                            <a>Commentaire</a>
+                        <div class=addcomment id='".$elem['link']."'>
+                            <form id='form'>
+                                <input class='commentinput' id='field' placeholder='Your comment...' />
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -85,50 +88,4 @@ if (isset($content))
     }
 }
 
-function getNameForID($id)
-{
-    if(isset($bdd) == 0)
-    {
-        include('db_connect.php');
-    }
-    try
-    {
-        $creator = $bdd->prepare('SELECT * FROM `USERS` where `ID` = ?; LIMIT 1;');
-        $creator->execute(array($id));
-    }
-    catch (PDOException $e)
-    {
-        return('error');
-    }
-    $data = $creator->fetch();
-    $creator->closeCursor();
-    return($data['Name']);
-}
-
-function getLikeForId($id, $pic)
-{
-    if(isset($bdd) == 0)
-    {
-        include('db_connect.php');
-    }
-    try
-    {
-        $creator = $bdd->prepare('SELECT * FROM `LIKES` WHERE `USER` = ? AND `PicID` = ? LIMIT 1;');
-        $creator->execute(array($id, $pic));
-    }
-    catch (PDOException $e)
-    {
-        return('error');
-    }
-    $data = $creator->fetch();
-    $creator->closeCursor();
-    if($data == '')
-    {
-        return(0);
-    }
-    else
-    {
-        return(1);
-    }
-}
 ?>

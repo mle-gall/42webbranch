@@ -7,18 +7,18 @@ include "php/header.php";
     <p>
         <?php
         if(isset($_GET["error"]) && $_GET["error"] === "alreadyexists")
-            echo("<div class=msgerror><a>ERROR : Login or email already used.</a></div>");
+            echo("<div class=msgerror><p>ERROR : Login or email already used.</p></div>");
         if(isset($_GET["error"]) && $_GET["error"] === "passdontmatch")
-            echo("<div class=msgerror><a>ERROR : The two password don't match.</a></div>");
+            echo("<div class=msgerror><p>ERROR : The two password don't match.</p></div>");
         if(isset($_GET["error"]) && $_GET["error"] === "emptyfield")
-            echo("<div class=msgerror><a>ERROR : One field is incorrect or missing.</a></div>");
+            echo("<div class=msgerror><p>ERROR : One field is incorrect or missing.</p></div>");
         ?>
         <h1>Register to Camagru</h1>
-        <input class=forminput placeholder="Login" type="text" name="login" autofocus required />
+        <input class=forminput placeholder="Login" type="text" name="login" autofocus maxlength="20" required/>
         <br>
-        <input class=forminput placeholder="E-mail adress" type="email" name="email" required />
+        <input class=forminput placeholder="E-mail adress" type="email" name="email" minlength="3" maxlength="200" required />
         <br>
-        <input class=forminput placeholder="Password" type="password" name="passwd1" required />
+        <input class=forminput placeholder="Password" type="password" name="passwd1" minlength="6" maxlength="200" required />
         <br>
         <input class=forminput placeholder="Repeat Password" type="password" name="passwd2" required />
         <br>

@@ -6,6 +6,10 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
+p {
+    margin: 0px;
+}
+
 .content {
     display: flex;
     align-items: center;
@@ -117,12 +121,8 @@ body {
     width : 100%;
     padding: 15px;
 }
-.username {
-    width : 100px;
-    overflow: hidden;
-}
 
-.usr > a {
+.usr > p {
     size : 14px;
 }
 
@@ -137,16 +137,47 @@ body {
 }
 
 .comsection {
-    padding-bottom: 10px;
+    width: 100%-10px;
+    margin: 20px 20px 0px 20px;
+}
+
+.username {
+    margin-right: 10px;
 }
 
 .comment {
+    margin:5px;
     display: flex;
-    padding-left: 15px;
+}
+
+.comments {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    max-height: 300px;
+    overflow: scroll;
 }
 
 .text {
-    max-width: 60%;
+    width:100%;
+    margin-right: 10px;
+}
+
+.addcomment {
+    padding: 5px;
+    width: 100%-20px;
+    border-top: 1px solid #dbd8d8;
+    display: flex;
+    justify-content: space-between;
+}
+
+#form {
+    width:100%;
+}
+
+.commentinput {
+    border: 0px;
+    width: 100%;
+    height: 30px;
 }
 
 /* =====ERRMSG===== */
@@ -189,7 +220,7 @@ input[type="submit"],
     height:30px;
 }
 
-a.buttonin {
+p.buttonin {
     color: #000000;
     display:block;
     width:100%;
@@ -202,7 +233,7 @@ a.buttonin {
     border: 1px solid #dbd8d8;
     text-align: center;
 }
-a.buttonin:hover {
+p.buttonin:hover {
     text-decoration: none;
     cursor: pointer;
     color: #ffffff;

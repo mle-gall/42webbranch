@@ -9,7 +9,7 @@ function create_table_user($bdd)
             Name VARCHAR( 50 ) NOT NULL,
             Password VARCHAR( 200 ) NOT NULL,
             Activated VARCHAR( 2 ) NOT NULL,
-            Email VARCHAR( 50 ) NOT NULL);" ;
+            Email VARCHAR( 200 ) NOT NULL);" ;
             $bdd->exec($sql);
             print("Created $table Table.\n");
     }
@@ -43,6 +43,7 @@ function create_table_comments($bdd)
         $sql ="CREATE TABLE IF NOT EXISTS $table(
             ID INT( 11 ) AUTO_INCREMENT PRIMARY KEY,
             CreatorID VARCHAR( 50 ) NOT NULL,
+            PicID VARCHAR( 200 ) NOT NULL,
             Content VARCHAR( 1000 ) NOT NULL);";
             $bdd->exec($sql);
             print("Created $table Table.\n");

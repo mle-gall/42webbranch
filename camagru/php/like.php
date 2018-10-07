@@ -6,7 +6,7 @@ if(isset($bdd) == 0)
 {
     include('db_connect.php');
 }
-if (isset($content) && isset($_SESSION['id']))
+if (isset($content) && isset($_SESSION['id']) && $_SESSION['connexion_status'] == "connected")
 {
     try
     {

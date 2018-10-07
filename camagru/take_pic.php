@@ -43,7 +43,7 @@ if($stickers = scandir("uploads/stickers"))
             <video id="video"></video>
             <button class=buttoncam id="startbutton">Take Picture</button>
             <div class=or id=or>
-                <a>Or</a>
+                <p>Or</p>
             </div>
             <label for="imginput" class="label-file" id="lab">
                 Upload Image

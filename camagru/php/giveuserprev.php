@@ -23,7 +23,7 @@ if (isset($_SESSION['id']) AND $_SESSION['connexion_status'] === 'connected')
         echo('<div class=sidepic>
         <img src=uploads/images/'.$data['link'].' class=prev />
         <div class="removebutton" id='.$data['link'].' >
-        <a>Remove Picture</a>
+        <p>Remove Picture</p>
         </div>
         </div>');
         $i = 1;

@@ -1,6 +1,6 @@
 <html>
 <div class=footer>
-    <a>lol</a>
+    <p>lol</p>
 </div>
 </body>
 </html>

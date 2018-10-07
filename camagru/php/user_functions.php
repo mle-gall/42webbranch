@@ -12,13 +12,19 @@ function add_user($name, $pass, $activ, $mail, $bdd)
     $response->closeCursor();
     if(empty($data))
     {
-        $req = $bdd->prepare('INSERT INTO USERS(Name, Password, Activated, Email) VALUES(:name, :passwd, :activ, :mail)');
-        $req->execute(array(
-            'name' => $name,
-            'passwd' => $pass,
-            'activ' => $activ,
-            'mail' => $mail
-        ));
+        try {
+            $req = $bdd->prepare('INSERT INTO USERS(Name, Password, Activated, Email) VALUES(:name, :passwd, :activ, :mail)');
+            $req->execute(array(
+                'name' => $name,
+                'passwd' => $pass,
+                'activ' => $activ,
+                'mail' => $mail
+            ));
+        }
+        catch (Exception $e)
+        {
+            die('Erreur : ' . $e->getMessage());
+        }
         if ($activ === 0)
         {
             $nb = rand(0, 9);
@@ -35,16 +41,22 @@ function add_user($name, $pass, $activ, $mail, $bdd)
 }
 function log_user($name, $pass, $bdd)
 {
-    $response = $bdd->prepare("SELECT * FROM USERS WHERE Name LIKE ? OR Email LIKE ?");
-    $response->execute(array($name, $name));
-    $data = $response->fetch();
-    $response->closeCursor();
+    try {
+        $response = $bdd->prepare("SELECT * FROM USERS WHERE Name LIKE ? OR Email LIKE ?");
+        $response->execute(array($name, $name));
+        $data = $response->fetch();
+        $response->closeCursor();
+    }
+    catch (Exception $e)
+    {
+        die('Erreur : ' . $e->getMessage());
+    }
     if(!empty($data))
     {
         if($pass === $data['Password'])
         {
             if($data['Activated'] != 0)
-                return intval($data['ID']);
+            return intval($data['ID']);
             else
             {
                 return "-1";
@@ -56,6 +68,6 @@ function log_user($name, $pass, $bdd)
         }
     }
     else
-        return "0";
+    return "0";
 }
 ?>
