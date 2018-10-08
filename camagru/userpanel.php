@@ -61,6 +61,30 @@ if ($_SESSION['login'] == '' OR $_SESSION['connexion_status'] != 'connected')
             <input class=buttonin type="submit" name="submit" value="OK" />
         </p>
     </form>
+    <form class="formbg" action="php/notif_update.php" method="post">
+        <p>
+            <?php
+            include("php/notification.php");
+            if(isset($_GET["nsuccess"]) && $_GET["nsuccess"] === "updated")
+                echo("<div class=msgsuccess><a>Your notifications preferences has been updated !</a></div>");
+            if(isset($_GET["nerror"]) && $_GET["nerror"] === "error")
+                echo("<div class=msgerror><a>An error occured.</a></div>");
+            if (notifications($_SESSION['id']) == "1")
+            {
+                $value = "checked=checked";
+            }
+            else {
+                $value = '';
+            }
+            ?>
+            <h1>Notifications</h1>
+            <input type="checkbox" name="Notification" <?php echo($value); ?>><p>
+                Be notified for new comments.
+            </p></input>
+            <br>
+            <input class=buttonin type="submit" name="submit" value="OK" />
+        </p>
+    </form>
 </div>
 <?php
 Include("php/footer.php");

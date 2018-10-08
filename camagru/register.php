@@ -28,5 +28,5 @@ include "php/header.php";
     </div>
 
 <?php
-include "php/footer.php";
+Include("php/footer.php");
 ?>

@@ -92,4 +92,58 @@ function getHash($user)
     return($hash);
 }
 
+function send_retrieve_link($mail, $user)
+{
+    $key = hash('sha512', uniqid());
+    include('../mails/pw-template.php');
+    if(isset($bdd) == 0)
+    {
+        include('db_connect.php');
+    }
+    try {
+        $req = $bdd->prepare("UPDATE `USERS` SET `ReintKey` = ? WHERE `USERS`.`Name` = ?");
+        $req->execute(array(
+            $key,
+            $user
+        ));
+    }
+    catch (Exception $e)
+    {
+        die('Erreur : ' . $e->getMessage());
+    }
+    $req->closeCursor();
+    include ('../mails/pw-template.php');
+    mail($mail, "Reinitialize your password.", $template, $headers);
+}
+
+function user_fits_mail($user, $mail)
+{
+    if(isset($bdd) == 0)
+    {
+        include('db_connect.php');
+    }
+    try
+    {
+        $req = $bdd->prepare('SELECT * FROM `USERS` WHERE `Name` = ?');
+        $req->execute(array(
+            $user
+        ));
+    }
+    catch (PDOException $e)
+    {
+        return('error');
+    }
+    $data = $req->fetch();
+    if(isset($data))
+    {
+        if($mail == $data['Email']);
+        {
+            send_retrieve_link($mail, $user);
+            return TRUE;
+        }
+        return FALSE;
+    }
+    return FALSE;
+}
+
 ?>

@@ -8,6 +8,8 @@ Include("php/header.php");
         <?php
         if(isset($_GET["success"]) && $_GET["success"] === "activate")
             echo("<div class=msgsuccess><a>Your account has been activated. Welcome to Camagru !</a></div>");
+        if(isset($_GET["sucess"]) && $_GET["sucess"] === "retrievelink")
+            echo("<div class=msgsuccess><a>A link to reinitialize your password has been sent to your mailbox.</a></div>");
         if(isset($_GET["error"]) && $_GET["error"] === "unvalidatedaccount")
             echo("<div class=msgerror><a>Your account is not validated. Check your inbox and activate it.</a></div>");
         if(isset($_GET["error"]) && $_GET["error"] === "invalidpw")
@@ -20,9 +22,10 @@ Include("php/header.php");
         <br>
         <input class=buttonin type="submit" name="submit" value="OK" />
     </p>
+    <a href=retrieve.php >Lost your password ?</a>
     </form>
     </div>
 
 <?php
-include "php/footer.php";
+Include("php/footer.php");
 ?>

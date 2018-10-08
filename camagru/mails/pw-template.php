@@ -1,8 +1,15 @@
 <?php
+include('../config/database.php');
 $headers = 'MIME-Version: 1.0' . "\r\n" . 'Content-type: text/html; charset=UTF-8' . "\r\n";
 $headers .= "X-Mailer: PHP \r\n";
 $headers .= 'From: "Camagru"<"no-reply@camagru.com">' . "\r\n";
 $template = '<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office"><head>
+    <!--[if gte mso 9]><xml>
+     <o:OfficeDocumentSettings>
+      <o:AllowPNG/>
+      <o:PixelsPerInch>96</o:PixelsPerInch>
+     </o:OfficeDocumentSettings>
+    </xml><![endif]-->
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width">
     <!--[if !mso]><!--><meta http-equiv="X-UA-Compatible" content="IE=edge"><!--<![endif]-->
@@ -229,9 +236,9 @@ a[x-apple-data-detectors=true] {
               <!--[if (!mso)&(!IE)]><!--><div style="border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent; padding-top:5px; padding-bottom:5px; padding-right: 0px; padding-left: 0px;"><!--<![endif]-->
 
 
-                    <div align="center" class="img-container left fixedwidth " style="padding-right: 0px;  padding-left: 0px;">
-<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr style="line-height:0px;line-height:0px;"><td style="padding-right: 0px; padding-left: 0px;" align="left"><![endif]-->
-  <img class="left fixedwidth" align="left" border="0" src="https://d15k2d11r6t6rl.cloudfront.net/public/users/BeeFree/beefree-wu2esegder8/logo.svg" alt="Image" title="Image" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: 0;height: auto;float: none;width: 100%;max-width: 225px" width="225">
+                    <div align="center" class="img-container center fixedwidth " style="padding-right: 0px;  padding-left: 0px;">
+<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr style="line-height:0px;line-height:0px;"><td style="padding-right: 0px; padding-left: 0px;" align="center"><![endif]-->
+  <img class="center fixedwidth" align="center" border="0" src="https://d15k2d11r6t6rl.cloudfront.net/public/users/BeeFree/beefree-wu2esegder8/logo.svg" alt="Image" title="Image" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: 0;height: auto;float: none;width: 100%;max-width: 225px" width="225">
 <!--[if mso]></td></tr></table><![endif]-->
 </div>
 
@@ -239,8 +246,8 @@ a[x-apple-data-detectors=true] {
 
                     <div class="">
 	<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px;"><![endif]-->
-	<div style="color:#555555;line-height:120%;font-family:Arial, "Helvetica Neue", Helvetica, sans-serif; padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px;">
-		<div style="font-size:12px;line-height:14px;color:#555555;font-family:Arial, "Helvetica Neue", Helvetica, sans-serif;text-align:left;"><p style="margin: 0;font-size: 12px;line-height: 14px">Hi&#160;!</p><p style="margin: 0;font-size: 12px;line-height: 14px">Welcome on Camagru from male-gal.</p><p style="margin: 0;font-size: 12px;line-height: 14px">Click on the link below to activate your account :</p></div>
+	<div style="color:#555555;font-family:Arial, "Helvetica Neue", Helvetica, sans-serif;line-height:120%; padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px;">
+		<div style="font-size:12px;line-height:14px;color:#555555;font-family:Arial, "Helvetica Neue", Helvetica, sans-serif;text-align:left;"><p style="margin: 0;font-size: 12px;line-height: 14px;text-align: left">Hi&#160;!</p><p style="margin: 0;font-size: 12px;line-height: 14px;text-align: left">&#160;</p><p style="margin: 0;font-size: 12px;line-height: 14px;text-align: left">Someone just added a comment on one of your pictures.</p><p style="margin: 0;font-size: 12px;line-height: 14px;text-align: left">Click the link below to reinitialize your password :</p></div>
 	</div>
 	<!--[if mso]></td></tr></table><![endif]-->
 </div>
@@ -248,9 +255,9 @@ a[x-apple-data-detectors=true] {
 
 
 <div align="center" class="button-container center " style="padding-right: 10px; padding-left: 10px; padding-top:10px; padding-bottom:10px;">
-  <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-spacing: 0; border-collapse: collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top:10px; padding-bottom:10px;" align="center"><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="url" style="height:31pt; v-text-anchor:middle; width:166pt;" arcsize="22%" strokecolor="#000000" fillcolor="#000000"><w:anchorlock/><v:textbox inset="0,0,0,0"><center style="color:#ffffff; font-family:Arial, "Helvetica Neue", Helvetica, sans-serif; font-size:16px;"><![endif]-->
-    <a href="http://'.$site_adress.'/php/activate.php?id='.$nb.$name.'-'.$id.'" target="_blank" style="display: block;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;color: #ffffff; background-color: #000000; border-radius: 9px; -webkit-border-radius: 9px; -moz-border-radius: 9px; max-width: 460px; width: 45%; border-top: 0px solid transparent; border-right: 0px solid transparent; border-bottom: 0px solid transparent; border-left: 0px solid transparent; padding-top: 5px; padding-right: 20px; padding-bottom: 5px; padding-left: 20px; font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;mso-border-alt: none">
-      <span style="font-family:Arial, "Helvetica Neue", Helvetica, sans-serif;font-size:16px;line-height:32px;">Activate your account</span>
+  <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-spacing: 0; border-collapse: collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top:10px; padding-bottom:10px;" align="center"><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="url" style="height:46pt; v-text-anchor:middle; width:166pt;" arcsize="15%" strokecolor="#000000" fillcolor="#000000"><w:anchorlock/><v:textbox inset="0,0,0,0"><center style="color:#ffffff; font-family:Arial, "Helvetica Neue", Helvetica, sans-serif; font-size:16px;"><![endif]-->
+    <a href="http://'.$site_adress.'/reinit.php?id='.$key.'" target="_blank" style="display: block;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;color: #ffffff; background-color: #000000; border-radius: 9px; -webkit-border-radius: 9px; -moz-border-radius: 9px; max-width: 460px; width: 45%; border-top: 0px solid transparent; border-right: 0px solid transparent; border-bottom: 0px solid transparent; border-left: 0px solid transparent; padding-top: 15px; padding-right: 20px; padding-bottom: 15px; padding-left: 20px; font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;mso-border-alt: none">
+      <span style="font-family:Arial, "Helvetica Neue", Helvetica, sans-serif;font-size:16px;line-height:32px;">Reinitialize</span>
     </a>
   <!--[if mso]></center></v:textbox></v:roundrect></td></tr></table><![endif]-->
 </div>
@@ -259,11 +266,14 @@ a[x-apple-data-detectors=true] {
 
                     <div class="">
 	<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px;"><![endif]-->
-	<div style="color:#555555;line-height:120%;font-family:Arial, "Helvetica Neue", Helvetica, sans-serif; padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px;">
-		<div style="font-size:12px;line-height:14px;color:#555555;font-family:Arial, "Helvetica Neue", Helvetica, sans-serif;text-align:left;"><p style="margin: 0;font-size: 12px;line-height: 14px">Hope you will enjoy your experience, and see you soon !</p></div>
+	<div style="color:#555555;font-family:Arial, "Helvetica Neue", Helvetica, sans-serif;line-height:120%; padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px;">
+		<div style="font-size:12px;line-height:14px;color:#555555;font-family:Arial, "Helvetica Neue", Helvetica, sans-serif;text-align:left;"><p style="margin: 0;font-size: 12px;line-height: 14px">Dont forget not to loose your mind again :)</p></div>
 	</div>
 	<!--[if mso]></td></tr></table><![endif]-->
 </div>
+
+
+
 <table border="0" cellpadding="0" cellspacing="0" width="100%" class="divider " style="border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;min-width: 100%;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%">
     <tbody>
         <tr style="vertical-align: top">
@@ -285,7 +295,7 @@ a[x-apple-data-detectors=true] {
 
                     <div class="">
 	<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px;"><![endif]-->
-	<div style="color:#555555;line-height:120%;font-family:Arial, "Helvetica Neue", Helvetica, sans-serif; padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px;">
+	<div style="color:#555555;font-family:Arial, "Helvetica Neue", Helvetica, sans-serif;line-height:120%; padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px;">
 		<div style="font-size:12px;line-height:14px;color:#555555;font-family:Arial, "Helvetica Neue", Helvetica, sans-serif;text-align:left;"><p style="margin: 0;font-size: 14px;line-height: 17px"><span style="font-size: 10px; line-height: 12px;">Sent by male-gal. If not desired, sorry for <span style="line-height: 12px; font-size: 10px;">inconvenience</span>.</span></p></div>
 	</div>
 	<!--[if mso]></td></tr></table><![endif]-->

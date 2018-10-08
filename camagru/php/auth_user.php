@@ -21,11 +21,11 @@ if($_POST['submit'] === "OK" && isset($_POST['login']) && isset($_POST['passwd']
     }
     else
     {
-        //header('Location: ../login.php');
+        header('Location: ../login.php');
     }
-    // else
-    // {
-    //     header('Location: register.php');
-    // }
+    else
+    {
+        header('Location: register.php');
+    }
 }
 ?>

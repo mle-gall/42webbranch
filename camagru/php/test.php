@@ -1,7 +1,13 @@
 <?php
-include('utils.php');
+include('notification.php');
 {
-    $creatorID = getCreatorId("2018-08-16.02:04:38.png");
-    echo($creatorID);
+    $creator = 1;
+    if (notifications(1) == TRUE)
+    {
+        $value == "value=1";
+    }
+    else {
+        $value == '';
+    }
 }
 ?>

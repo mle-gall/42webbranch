@@ -48,9 +48,13 @@ session_start();
             <a href=take_pic.php title='Take a Picture'><img class=menicon src='uploads/icons/camera.svg'/></a>
             </div>
             <div class=menutab>
+            <a href=userpanel.php title='Settings'><img class=menicon src='uploads/icons/user.svg'/></a>
+            </div>
+            <div class=menutab>
             <a href=php/unauth_user.php title='Log-Out'><img class=menicon src='uploads/icons/logout.svg'/></a>
             </div>
-            </div>";
+            </div>
+            ";
         }
         ?>
     </div>

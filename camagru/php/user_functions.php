@@ -5,6 +5,42 @@ if(isset($bdd) == 0)
     include('db_connect.php');
 }
 
+function reint_pw($newpw, $key)
+{
+    echo("pw : ".$newpw);
+    echo("<br />");
+    echo("key : ".$key);
+    if(isset($bdd) == 0)
+    {
+        include('db_connect.php');
+    }
+    try {
+        $req = $bdd->prepare("UPDATE `USERS` SET `Password` = ? WHERE `USERS`.`ReintKey` = ?");
+        $req->execute(array(
+            $newpw,
+            $key
+        ));
+    }
+    catch (Exception $e)
+    {
+        die('Erreur : ' . $e->getMessage());
+    }
+    $req->closeCursor();
+    try {
+        $req = $bdd->prepare("UPDATE `USERS` SET `ReintKey` = ? WHERE `USERS`.`ReintKey` = ?");
+        $req->execute(array(
+            $key,
+            '0'
+        ));
+    }
+    catch (Exception $e)
+    {
+        die('Erreur : ' . $e->getMessage());
+    }
+    $req->closeCursor();
+    return TRUE;
+}
+
 function mail_update($mail, $userid)
 {
     if(isset($bdd) == 0)
@@ -15,6 +51,27 @@ function mail_update($mail, $userid)
         $req = $bdd->prepare("UPDATE `USERS` SET `Email` = ? WHERE `USERS`.`ID` = ?");
         $req->execute(array(
             $mail,
+            $userid
+        ));
+    }
+    catch (Exception $e)
+    {
+        die('Erreur : ' . $e->getMessage());
+    }
+    $req->closeCursor();
+    return TRUE;
+}
+
+function notif_update($val, $userid)
+{
+    if(isset($bdd) == 0)
+    {
+        include('db_connect.php');
+    }
+    try {
+        $req = $bdd->prepare("UPDATE `USERS` SET `Mailing` = ? WHERE `USERS`.`ID` = ?");
+        $req->execute(array(
+            $val,
             $userid
         ));
     }
