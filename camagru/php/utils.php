@@ -45,4 +45,51 @@ function getLikeForId($id, $pic)
         return(1);
     }
 }
+
+function getCreatorId($picid)
+{
+    if(isset($bdd) == 0)
+    {
+        include('db_connect.php');
+    }
+    try
+    {
+        $req = $bdd->prepare('SELECT * FROM `PICTURES` WHERE `link` = ?');
+        $req->execute(array(
+            $picid
+        ));
+    }
+    catch (PDOException $e)
+    {
+        return('error');
+    }
+    $data = $req->fetch();
+    $creatorID = $data['CreatorID'];
+    $req->closeCursor();
+    return($creatorID);
+}
+
+function getHash($user)
+{
+    if(isset($bdd) == 0)
+    {
+        include('db_connect.php');
+    }
+    try
+    {
+        $req = $bdd->prepare('SELECT * FROM `USERS` WHERE `ID` = ?');
+        $req->execute(array(
+            $user
+        ));
+    }
+    catch (PDOException $e)
+    {
+        return('error');
+    }
+    $data = $req->fetch();
+    $hash = $data['Password'];
+    $req->closeCursor();
+    return($hash);
+}
+
 ?>

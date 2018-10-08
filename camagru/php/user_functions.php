@@ -4,8 +4,96 @@ if(isset($bdd) == 0)
 {
     include('db_connect.php');
 }
+
+function mail_update($mail, $userid)
+{
+    if(isset($bdd) == 0)
+    {
+        include('db_connect.php');
+    }
+    try {
+        $req = $bdd->prepare("UPDATE `USERS` SET `Email` = ? WHERE `USERS`.`ID` = ?");
+        $req->execute(array(
+            $mail,
+            $userid
+        ));
+    }
+    catch (Exception $e)
+    {
+        die('Erreur : ' . $e->getMessage());
+    }
+    $req->closeCursor();
+    return TRUE;
+}
+
+function update_pw($old, $new, $userid)
+{
+    include('utils.php');
+    $oldcheck = getHash($userid);
+    if($oldcheck !== $old)
+    {
+        return FALSE;
+    }
+    if(isset($bdd) == 0)
+    {
+        include('db_connect.php');
+    }
+    try {
+        $req = $bdd->prepare("UPDATE `USERS` SET `Password` = ? WHERE `USERS`.`ID` = ?");
+        $req->execute(array(
+            $new,
+            $userid
+        ));
+    }
+    catch (Exception $e)
+    {
+        die('Erreur : ' . $e->getMessage());
+    }
+    $req->closeCursor();
+    return TRUE;
+}
+
+function name_update_user($name ,$id)
+{
+    if(isset($bdd) == 0)
+    {
+        include('db_connect.php');
+    }
+    try {
+        $req = $bdd->prepare("SELECT * FROM `USERS` WHERE `Name` LIKE ? LIMIT 1");
+        $req->execute(array(
+            $name
+        ));
+    }
+    catch (Exception $e)
+    {
+        die('Erreur : ' . $e->getMessage());
+    }
+    $data = $req->fetch();
+    $req->closeCursor();
+    if(empty($data))
+    {
+        try {
+            $req = $bdd->prepare('UPDATE `USERS` SET `Name` = ? WHERE `ID` LIKE ?');
+            $req->execute(array(
+                $name,
+                $id
+            ));
+        }
+        catch (Exception $e)
+        {
+            die('Erreur : ' . $e->getMessage());
+        }
+        return TRUE;
+    }
+    else {
+        return FALSE;
+    }
+}
+
 function add_user($name, $pass, $activ, $mail, $bdd)
 {
+    include('../config/database.php');
     $response = $bdd->prepare("SELECT * FROM USERS WHERE Name LIKE ? OR Email LIKE ? LIMIT 1");
     $response->execute(array($name, $mail));
     $data = $response->fetch();
@@ -29,8 +117,8 @@ function add_user($name, $pass, $activ, $mail, $bdd)
         {
             $nb = rand(0, 9);
             $id = hash('sha512', 'camagru'.$nb);
-            mail($mail, "Activate your account", "Hello, click on link below to activate your account :<br />$site_adress/activate?id=$nb$name-$id");
-            echo ("Hello, click on link below to activate your account :<br />".$site_adress."/activate.php?id=".$nb.$name."-".$id);
+            include("../mails/activation-template.php");
+            mail($mail, "Activate your account", $template, $headers);
         }
         return TRUE;
     }
@@ -39,6 +127,7 @@ function add_user($name, $pass, $activ, $mail, $bdd)
         return FALSE;
     }
 }
+
 function log_user($name, $pass, $bdd)
 {
     try {

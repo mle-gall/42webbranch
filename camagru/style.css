@@ -275,6 +275,20 @@ p.buttonin:hover {
     align-items: center;
 }
 
+.contentformpanel {
+    width: 100%;
+    padding-top: 40px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.paneltitle {
+    width: 100%;
+    padding: 60px;
+}
+
 .formbg {
     padding: 30px;
     background-color: #ffffff;
