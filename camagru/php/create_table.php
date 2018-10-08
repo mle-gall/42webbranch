@@ -10,7 +10,7 @@ function create_table_user($bdd)
             Password VARCHAR( 200 ) NOT NULL,
             Activated VARCHAR( 2 ) NOT NULL,
             Mailing VARCHAR( 2 ) NOT NULL DEFAULT '1',
-            ReintKey VARCHAR( 200 ) NOT NULL,
+            ReintKey VARCHAR( 200 ) NOT NULL DEFAULT '0',
             Email VARCHAR( 200 ) NOT NULL);" ;
             $bdd->exec($sql);
             print("Created $table Table.\n");

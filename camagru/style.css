@@ -519,4 +519,6 @@ input[type="file"] {
     height: 30%;
     width : 100%;
     border: 1px solid #dbd8d8;
+    position: fixed;
+    bottom: 0px;
 }

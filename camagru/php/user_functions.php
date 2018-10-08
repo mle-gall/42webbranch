@@ -7,9 +7,10 @@ if(isset($bdd) == 0)
 
 function reint_pw($newpw, $key)
 {
-    echo("pw : ".$newpw);
-    echo("<br />");
-    echo("key : ".$key);
+    if ($key == '0')
+    {
+        return FALSE;
+    }
     if(isset($bdd) == 0)
     {
         include('db_connect.php');
@@ -29,8 +30,8 @@ function reint_pw($newpw, $key)
     try {
         $req = $bdd->prepare("UPDATE `USERS` SET `ReintKey` = ? WHERE `USERS`.`ReintKey` = ?");
         $req->execute(array(
-            $key,
-            '0'
+            '0',
+            $key
         ));
     }
     catch (Exception $e)

@@ -136,7 +136,7 @@ function user_fits_mail($user, $mail)
     $data = $req->fetch();
     if(isset($data))
     {
-        if($mail == $data['Email']);
+        if($mail === $data['Email'])
         {
             send_retrieve_link($mail, $user);
             return TRUE;

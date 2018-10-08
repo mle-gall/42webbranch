@@ -23,9 +23,5 @@ if($_POST['submit'] === "OK" && isset($_POST['login']) && isset($_POST['passwd']
     {
         header('Location: ../login.php');
     }
-    else
-    {
-        header('Location: register.php');
-    }
 }
 ?>
