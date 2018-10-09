@@ -28,7 +28,7 @@ function getcontent(lastelem) {
             });
         })
         document.querySelectorAll('.likebtn').forEach(btn =>{
-                getComments(btn.id);
+            getComments(btn.id);
         })
         document.querySelectorAll('.addcomment').forEach(adder =>{
             adder.querySelector("#form").addEventListener("submit", e => {
@@ -88,12 +88,16 @@ function getComments(id)
     }).then(res => res.text().then(resp => {
         resp = JSON.parse(resp);
         resp.forEach(function(k){
-            document.getElementById(id + "com").innerHTML +=
-            "<div class=comment><div class=username><b>" + k['CreatorName'] +
-            "</b></div><div class=text><p>" + k[3] +
-            "</p></div></div>";
+            if (document.getElementById(id + "com")) {
+                document.getElementById(id + "com").innerHTML +=
+                "<div class=comment><div class=username><b>" + k['CreatorName'] +
+                "</b></div><div class=text><p>" + k[3] +
+                "</p></div></div>";
+            }
         });
-        document.getElementById(id + "com").id += 'done';
+        if (document.getElementById(id + "com")) {
+            document.getElementById(id + "com").id += 'done';
+        }
     }));
 }
 
