@@ -28,7 +28,7 @@ function getcontent(lastelem) {
             });
         })
         document.querySelectorAll('.likebtn').forEach(btn =>{
-            getComments(btn.id);
+                getComments(btn.id);
         })
         document.querySelectorAll('.addcomment').forEach(adder =>{
             adder.querySelector("#form").addEventListener("submit", e => {
@@ -93,6 +93,7 @@ function getComments(id)
             "</b></div><div class=text><p>" + k[3] +
             "</p></div></div>";
         });
+        document.getElementById(id + "com").id += 'done';
     }));
 }
 
