@@ -2,7 +2,7 @@
 include('../config/database.php');
 $headers = 'MIME-Version: 1.0' . "\r\n" . 'Content-type: text/html; charset=UTF-8' . "\r\n";
 $headers .= "X-Mailer: PHP \r\n";
-$headers .= 'From: "Camagru"<"no-reply@camagru.com">' . "\r\n";
+$headers .= 'From: "Camagru"<"male-gal@student.42.fr">' . "\r\n";
 $template = '<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office"><head>
     <!--[if gte mso 9]><xml>
      <o:OfficeDocumentSettings>
