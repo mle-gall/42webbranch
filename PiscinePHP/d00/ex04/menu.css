@@ -1,0 +1,115 @@
+*
+{
+	margin:0;
+	padding:0;
+	text-decoration: none;
+}
+
+body
+{
+	background-image: linear-gradient(to right, rgb(142, 28, 102), rgb(216, 10, 38));
+}
+
+a
+{
+	font-family: Ubuntu;
+	color: white;
+}
+
+.logoimg
+{
+	width: 20%;
+	height: 20%;
+}
+
+.logo
+{
+	padding-top: 30vh;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.center
+{
+	padding-top: 5vh;
+	height: 10vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+ 
+.content
+{
+	margin:auto;
+}
+ 
+#menu
+{
+	margin-top:20px;
+	height:40px;
+}
+
+
+#menu ul
+{
+	list-style-type:none;
+}
+
+#menu ul li
+{
+	float:left;
+}
+
+#menu li a
+{
+	display:block;
+	width:200px;
+	color:white;
+	line-height:40px;
+	background-color: #ff0066;
+	text-align:center;
+}
+
+#menu ul li a:hover
+{
+	color:#ff0066;
+	background-color:white;
+}
+ 
+#menu ul ul
+{
+	display:none;
+	position:absolute;
+}
+
+#menu ul ul.lvl2
+{
+	top:40px; left:0px;
+}
+
+#menu ul ul.lvl2 li
+{
+	float:none;
+}
+ 
+#menu ul ul.lvl3 li
+{
+	float:left;
+}
+
+#menu ul ul.lvl3
+{ 
+	top:0px;
+	left:200px;
+}
+
+#menu li
+{
+	position:relative;
+}
+
+#menu li:hover ul.lvl2, #menu li li:hover ul.lvl3
+{
+	display:block;
+}

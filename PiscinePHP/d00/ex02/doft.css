@@ -1,0 +1,196 @@
+body
+{
+	z-index:1;
+	background-color: rgb(80, 80, 80);
+}
+
+.middle
+{
+	display: flex;
+	justify-content: center;
+}
+
+.header
+{
+	display: flex;
+	justify-content: space-between;
+	width:60%;
+	background-color: rgb(143, 143, 143);
+    box-shadow: 13px 13px 5px black;
+    border-radius: 13px;
+    padding: 13px;
+}
+
+.left_panel
+{
+	display: inline-block;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	width:7vh;
+	height:40vh;
+	background-color: rgb(143, 143, 143);
+    box-shadow: 13px 13px 5px black;
+    border-radius: 13px;
+    padding: 13px;
+}
+
+.right_panel
+{
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	width:9vh;
+	height:40vh;
+	background-color: rgb(143, 143, 143);
+    box-shadow: 13px 13px 5px black;
+    border-radius: 13px;
+    padding: 13px;
+}
+
+.mid_panel
+{
+	height:47%;
+	background-color: rgb(143, 143, 143);
+    box-shadow: 13px 13px 5px black;
+    border-radius: 13px;
+    padding: 13px;
+}
+
+.content
+{
+	margin: auto;
+	width:55%;
+	margin-top: 1%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.buttons
+{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.panel_img
+{
+	width: 5vh
+}
+
+.panel_img_right
+{
+	margin: 1vh;
+	width: 6vh
+}
+
+.apple
+{
+	position: absolute;
+	bottom: 49vh;
+	right: 64vh;
+	width: 15vh;
+	height: 12vh;
+}
+
+.ikea
+{
+	position: absolute;
+	bottom: 40vh;
+	right: 103vh;
+	width: 15vh;
+	height: 19vh;
+}
+
+.loupe
+{
+	width:9%;
+	position: absolute;
+	z-index:2;
+	top:1.4%;
+	left: 70%;
+}
+
+.loupe img
+{
+	max-width: 100%;
+    height: auto;
+}
+
+.icon
+{
+	width:20px;
+}
+
+.cluster
+{
+	height: 100%;
+}
+
+.green
+{
+	position: absolute;
+	bottom: 27vh;
+	left: 34vh;
+	z-index: 2;
+	width:50vh;
+	height:15vh;
+	background-color: rgb(136, 255, 137);
+    box-shadow: 13px 13px 5px black;
+    border-radius: 13px;
+    padding: 13px;
+}
+
+.champ_reponse
+{
+	padding-top: 0.5vh;
+	display: flex;
+	justify-content: center;
+}
+
+input
+{
+	width: 100%;
+}
+
+h1
+{
+	font-size: 35;
+}
+
+a
+{
+	font-size: 20;
+}
+
+i
+{
+	font-size: 20;
+}
+
+#grey
+{
+	background-color: rgb(143, 143, 143);
+}
+
+#selected
+{
+	padding:6px;
+	background-color: red;
+	border-radius: 0.6vh;
+}
+
+#brick
+{
+	margin: 1vh;
+	width: 100%;
+	height: 13%;
+	background-image: url("images/brick.jpg");
+}
+
+#logo
+{
+	width:40%;
+}
